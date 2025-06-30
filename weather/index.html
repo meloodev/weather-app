@@ -13,38 +13,47 @@
 
 <body>
 
-    <div class="weather">
+    <header class="weather">
         <div class="container">
             <div class="weather__header">
                 <div class="weather__header-top">
                     <h2>Weather App</h2>
                     <div class="weather__search">
-                        <label for="search">
-                            <img src="./img/search.svg" alt="search">
+                        <label for="search" aria-label="Search">
+                            <img src="./img/search.svg" alt="search-icon">
                         </label>
                         <input id="search" type="search" placeholder="Search for a city...">
                     </div>
                 </div>
 
                 <div class="weather__header__icons">
-                    <img src="./img/day.svg" alt="plus">
-                    <img src="./img/plus.svg" alt="plus">
+                    <div class="header__icon-cover">
+                        <img src="./img/plus.svg" alt="plus">
+                    </div>
+                    <div class="header__icon-cover">
+                        <img src="./img/dark.svg" alt="dark">
+                    </div>
+
                 </div>
             </div>
+        </div>
+    </header>
 
-            <body>
+    <main class="main">
+        <div class="container">
+            <div class="container__inner">
                 <section class="weather__temp">
                     <div class="weather__cover">
                         <div class="weather__city">
-                            <h2>New York</h2>
                             <img src="./img/location.svg" alt="location">
+                            <h2>New York</h2>
                         </div>
                         <div class="weather__forecast">
                             <h1>22</h1>
                             <div class="weather__units">
-                                <span>°C</span>
+                                <button class="active" aria-pressed="true">°C</button>
                                 <span>|</span>
-                                <span>°F</span>
+                                <button aria-pressed="false">°F</button>
                             </div>
                         </div>
                         <div class="weather__info">
@@ -57,11 +66,10 @@
                     </div>
                     <div class="weather__status">
                         <img src="./img/cloudy.svg" alt="weather-icon">
-                        <span>Sat, Jun 28</span>
+                        <time datetime="2025-06-28">Sat, Jun 28</time>
                     </div>
                 </section>
-
-                <section class="weather__daily">
+                <!-- <section class="weather__daily">
                     <div class="weather__daily-header">
                         <h3 class="weather__daily-history">
                             <span class="weather__days">7</span>
@@ -90,10 +98,54 @@
                         </div>
                     </div>
                 </section>
-            </body>
+                <aside class="weather__details">
+                    <h3 class="weather__details-title">weather details</h3>
+                    <div class="weather__details-items">
+                        <div class="weather__details-item">
+                            <div class="details__item-cover">
+                                <img src="./img/humidity.svg" alt="humidity">
+                                <span>Humidity</span>
+                            </div>
+                            <div class="details__item-humidity">
+                                <span>65%</span>
+                                <span class="status">Normal</span>
+                            </div>
+                        </div>
+                        <div class="weather__details-item">
+                            <div class="details__item-cover">
+                                <img src="./img/wind-speed.svg" alt="wind-speed">
+                                <span>Wind Speed</span>
+                            </div>
+                            <div class="details__item-wind">
+                                <span>15 km/h</span>
+                                <span class="status">Moderate</span>
+                            </div>
+                        </div>
+                        <div class="weather__details-item">
+                            <div class="details__item-cover">
+                                <img src="./img/pressure.svg" alt="pressure">
+                                <span>Pressure</span>
+                            </div>
+                            <div class="details__item-pressure">
+                                <span>1013 hPa</span>
+                                <span class="status">Normal</span>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="weather__tips">
+                        <h3 class="weather__tips-title">Weather Tips</h3>
+                        <div class="weather__tips-body">
+                            <img src="./img/enjoy.svg" alt="enjoy">
+                            <p>Enjoy the weather today!</p>
+                        </div>
+                    </div>
+                </aside> -->
+            </div>
         </div>
-    </div>
+    </main>
+
+
 </body>
 
 </html>
