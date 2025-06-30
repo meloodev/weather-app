@@ -1,11 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Weather App</title>
 </head>
+
 <body>
-    <h1>hi</h1>
+
+    <div class="weather">
+        <div class="container">
+            <div class="weather__header">
+                <div class="weather__header-top">
+                    <h2>Weather App</h2>
+                    <div class="weather__search">
+                        <label for="search">
+                            <img src="./img/search.svg" alt="search">
+                        </label>
+                        <input id="search" type="search" placeholder="Search for a city...">
+                    </div>
+                </div>
+
+                <div class="weather__header__icons">
+                    <img src="./img/day.svg" alt="plus">
+                    <img src="./img/plus.svg" alt="plus">
+                </div>
+            </div>
+
+            <body>
+                <section class="weather__temp">
+                    <div class="weather__cover">
+                        <div class="weather__city">
+                            <h2>New York</h2>
+                            <img src="./img/location.svg" alt="location">
+                        </div>
+                        <div class="weather__forecast">
+                            <h1>22</h1>
+                            <div class="weather__units">
+                                <span>°C</span>
+                                <span>|</span>
+                                <span>°F</span>
+                            </div>
+                        </div>
+                        <div class="weather__info">
+                            <span class="weather__sky">Cloudy</span>
+                            <div class="weather__feels">
+                                <img src="./img/feels.svg" alt="feels">
+                                <span>Feels like <span class="weather__feels-temp">24</span>°</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weather__status">
+                        <img src="./img/cloudy.svg" alt="weather-icon">
+                        <span>Sat, Jun 28</span>
+                    </div>
+                </section>
+
+                <section class="weather__daily">
+                    <div class="weather__daily-header">
+                        <h3 class="weather__daily-history">
+                            <span class="weather__days">7</span>
+                            <span>-Day Forecast</span>
+                        </h3>
+                        <span class="weather__overview">Weekly Overview</span>
+                    </div>
+                    <div class="weather__daily-items">
+                        <div class="weather__daily-item">
+                            <div class="weather__daily-day">Today</div>
+                            <div class="weather__daily-status">
+                                <img src="./img/cloudy.svg" alt="status">
+                                <span>Cloudy</span>
+                            </div>
+                            <div class="weather__daily-temp">
+                                <img class="weather__temp-direction" src="./img/arrow-down.svg" alt="temp-direction">
+                                <h4 class="weather__temp-degree">
+                                    <span>22</span>
+                                    <span>°</span>
+                                </h4>
+                                <h4 class="weather__temp-feels">
+                                    <span>18</span>
+                                    <span>°</span>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </body>
+
+        </div>
+    </div>
 </body>
+
 </html>
