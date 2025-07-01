@@ -49,6 +49,7 @@ body {
 
 header {
   margin-bottom: 20px;
+  padding-top: 10px;
 }
 
 .container {
@@ -64,9 +65,7 @@ header {
   padding: 25px 25px 25px 25px;
   border-radius: 15px;
   box-shadow: 0px 20px 25px -5px rgba(229, 231, 235, 0.5), 0px 8px 10px -6px rgba(229, 231, 235, 0.5);
-  backdrop-filter: blur(2px);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(249, 250, 251, 0.7) 100%);
-  border: 1px solid #000;
 }
 
 .weather__header__icons {
@@ -76,25 +75,128 @@ header {
 }
 
 .header__icon-cover {
-  padding: 2px;
+  padding: 2px 5px;
   border-radius: 3px;
   transition: all 0.2s;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   cursor: pointer;
+  color: #6B7280;
+}
+
+.header__icon-cover.menu {
+  position: relative;
+}
+
+.header__icon-cover.menu .settings {
+  display: none;
+  position: absolute;
+  min-width: 100px;
+  top: calc(100% + 2px);
+  right: 0;
+  color: #000;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: #d2d2d2;
+}
+
+.header__icon-cover.menu .settings::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: -2px;
+  left: 0;
+  background-color: transparent;
+}
+
+.header__icon-cover.menu .settings li {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 4px;
+  border-radius: 3px;
+}
+
+.header__icon-cover.menu .settings > li > span {
+  margin-left: auto;
+}
+
+.header__icon-cover.menu .settings li:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.header__icon-cover.menu .settings li i {
+  padding-top: 1px;
+  font-size: 8px;
+}
+
+.header__icon-cover.menu .settings li:hover {
+  background-color: #fff;
+}
+
+.header__icon-cover.menu .settings > li:nth-child(2) {
+  position: relative;
+}
+
+.header__icon-cover.menu .settings > li:nth-child(2) ul {
+  display: none;
+  position: absolute;
+  right: calc(100% + 7px);
+  top: 0;
+  color: #000;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: #d2d2d2;
+  width: 80px;
+}
+
+.header__icon-cover.menu .settings > li:nth-child(2) ul::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 7px;
+  right: -7px;
+  top: 0;
+  background-color: transparent;
+}
+
+.header__icon-cover.menu .settings > li:nth-child(2) ul li {
+  display: flex;
+  align-items: center;
+}
+
+.header__icon-cover.menu .settings > li:nth-child(2) ul > li span {
+  margin-right: auto;
+}
+
+.header__icon-cover.menu:active > .settings,
+.header__icon-cover.menu:hover > .settings,
+.header__icon-cover.menu:focus > .settings {
+  display: block;
+}
+
+.header__icon-cover.menu .settings li:nth-child(2):active > .submenu,
+.header__icon-cover.menu .settings li:nth-child(2):hover > .submenu,
+.header__icon-cover.menu .settings li:nth-child(2):focus > .submenu {
+  display: block;
+}
+
+.header__icon-cover:nth-child(2) {
+  padding: 2px 6px;
+}
+
+.header__icon-cover:nth-child(3) {
+  padding: 2px 10px;
 }
 
 .header__icon-cover:active {
   background-color: rgba(210, 210, 210, 0.1921568627);
-}
-
-.header__icon-cover img {
-  width: 16px;
-  height: auto;
-}
-
-.header__icon-cover:nth-of-type(2) img {
-  width: 20px;
-  height: auto;
 }
 
 .weather__header-top {
@@ -128,7 +230,7 @@ header {
 
 .weather__search input {
   padding: 5px 0px 5px 23px;
-  border: 1px solid rgba(0, 0, 0, 0.0862745098);
+  background-color: transparent;
   border-radius: 4px;
   color: #64748B;
   font-weight: 400;
@@ -146,9 +248,7 @@ header {
   padding: 25px 25px 25px 25px;
   border-radius: 15px;
   box-shadow: 0px 20px 25px -5px rgba(229, 231, 235, 0.5), 0px 8px 10px -6px rgba(229, 231, 235, 0.5);
-  backdrop-filter: blur(2px);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(249, 250, 251, 0.7) 100%);
-  border: 1px solid #000;
 }
 
 .weather__city {
@@ -268,9 +368,7 @@ h1 {
   padding: 25px 25px 25px 25px;
   border-radius: 15px;
   box-shadow: 0px 20px 25px -5px rgba(229, 231, 235, 0.5), 0px 8px 10px -6px rgba(229, 231, 235, 0.5);
-  backdrop-filter: blur(2px);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(249, 250, 251, 0.7) 100%);
-  border: 1px solid #000;
 }
 
 .weather__daily-header {
@@ -376,10 +474,8 @@ h1 {
   padding: 25px 25px 25px 25px;
   border-radius: 15px;
   box-shadow: 0px 20px 25px -5px rgba(229, 231, 235, 0.5), 0px 8px 10px -6px rgba(229, 231, 235, 0.5);
-  backdrop-filter: blur(2px);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(249, 250, 251, 0.7) 100%);
   font-family: "Inter", sans-serif;
-  border: 1px solid #000;
 }
 
 .weather__details-header {
@@ -466,9 +562,7 @@ h1 {
   padding: 25px 25px 30px 25px;
   border-radius: 15px;
   box-shadow: 0px 20px 25px -5px rgba(229, 231, 235, 0.5), 0px 8px 10px -6px rgba(229, 231, 235, 0.5);
-  backdrop-filter: blur(2px);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(249, 250, 251, 0.7) 100%);
-  border: 1px solid #000;
 }
 
 .weather__tips-title {
@@ -496,6 +590,10 @@ h1 {
   font-size: 15px;
   color: #475569;
   text-align: center;
+}
+
+main {
+  padding-bottom: 10px;
 }
 
 .container__inner {
@@ -566,16 +664,16 @@ h1 {
     padding: 0;
   }
   .container__inner {
-    gap: 12px;
+    gap: 10px;
   }
   header {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .container__left {
-    gap: 12px;
+    gap: 10px;
   }
   .container__right {
-    gap: 12px;
+    gap: 10px;
   }
 }
 @media (max-width: 350px) {
