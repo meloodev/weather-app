@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -42,105 +43,230 @@
     <main class="main">
         <div class="container">
             <div class="container__inner">
-                <section class="weather__temp">
-                    <div class="weather__cover">
-                        <div class="weather__city">
-                            <img src="./img/location.svg" alt="location">
-                            <h2>New York</h2>
-                        </div>
-                        <div class="weather__forecast">
-                            <h1>22</h1>
-                            <div class="weather__units">
-                                <button class="active" aria-pressed="true">°C</button>
-                                <span>|</span>
-                                <button aria-pressed="false">°F</button>
+                <div class="container__left">
+                    <section class="weather__temp">
+                        <div class="weather__cover">
+                            <div class="weather__city">
+                                <img src="./img/location.svg" alt="location">
+                                <h2>New York</h2>
+                            </div>
+                            <div class="weather__forecast">
+                                <h1>22</h1>
+                                <div class="weather__units">
+                                    <button class="active" aria-pressed="true">°C</button>
+                                    <span>|</span>
+                                    <button aria-pressed="false">°F</button>
+                                </div>
+                            </div>
+                            <div class="weather__info">
+                                <span class="weather__sky">Cloudy</span>
+                                <div class="weather__feels">
+                                    <img src="./img/feels.svg" alt="feels">
+                                    <span>Feels like <span class="weather__feels-temp">24</span>°</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="weather__info">
-                            <span class="weather__sky">Cloudy</span>
-                            <div class="weather__feels">
-                                <img src="./img/feels.svg" alt="feels">
-                                <span>Feels like <span class="weather__feels-temp">24</span>°</span>
+                        <div class="weather__status">
+                            <img src="./img/cloudy.svg" alt="weather-icon">
+                            <time datetime="2025-06-28">Sat, Jun 28</time>
+                        </div>
+                    </section>
+                    <section class="weather__daily">
+                        <div class="weather__daily-header">
+                            <h3 class="weather__daily-history">
+                                <span class="weather__days">7</span>
+                                <span>-Day Forecast</span>
+                            </h3>
+                            <span class="weather__overview">Weekly Overview</span>
+                        </div>
+                        <div class="weather__daily-items">
+                            <div class="weather__daily-item">
+                                <div class="weather__daily-day">Today</div>
+                                <div class="weather__daily-status">
+                                    <img src="./img/cloudy.svg" alt="status">
+                                    <span>Cloudy</span>
+                                </div>
+                                <div class="weather__daily-temp">
+                                    <img class="weather__temp-direction" src="./img/arrow-down.svg"
+                                        alt="temp-direction">
+                                    <h4 class="weather__temp-degree">
+                                        <span class="degree__temp">22</span>
+                                        <span>°</span>
+                                    </h4>
+                                    <h4 class="weather__temp-feels">
+                                        <span class="feels__temp">18</span>
+                                        <span>°</span>
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="weather__daily-item">
+                                <div class="weather__daily-day">Tomorrow</div>
+                                <div class="weather__daily-status">
+                                    <img src="./img/sunny.svg" alt="status">
+                                    <span>Sunny</span>
+                                </div>
+                                <div class="weather__daily-temp">
+                                    <img class="weather__temp-direction" src="./img/arrow-up.svg" alt="temp-direction">
+                                    <h4 class="weather__temp-degree">
+                                        <span class="degree__temp">25</span>
+                                        <span>°</span>
+                                    </h4>
+                                    <h4 class="weather__temp-feels">
+                                        <span class="feels__temp">20</span>
+                                        <span>°</span>
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="weather__daily-item">
+                                <div class="weather__daily-day">Wed</div>
+                                <div class="weather__daily-status">
+                                    <img src="./img/sunny.svg" alt="status">
+                                    <span>Sunny</span>
+                                </div>
+                                <div class="weather__daily-temp">
+                                    <img class="weather__temp-direction" src="./img/arrow-down.svg"
+                                        alt="temp-direction">
+                                    <h4 class="weather__temp-degree">
+                                        <span class="degree__temp">24</span>
+                                        <span>°</span>
+                                    </h4>
+                                    <h4 class="weather__temp-feels">
+                                        <span class="feels__temp">19</span>
+                                        <span>°</span>
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="weather__daily-item">
+                                <div class="weather__daily-day">Thu</div>
+                                <div class="weather__daily-status">
+                                    <img src="./img/rainy.svg" alt="status">
+                                    <span>Rainy</span>
+                                </div>
+                                <div class="weather__daily-temp">
+                                    <img class="weather__temp-direction" src="./img/arrow-down.svg"
+                                        alt="temp-direction">
+                                    <h4 class="weather__temp-degree">
+                                        <span class="degree__temp">21</span>
+                                        <span>°</span>
+                                    </h4>
+                                    <h4 class="weather__temp-feels">
+                                        <span class="feels__temp">16</span>
+                                        <span>°</span>
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="weather__daily-item">
+                                <div class="weather__daily-day">Fri</div>
+                                <div class="weather__daily-status">
+                                    <img src="./img/cloudy.svg" alt="status">
+                                    <span>Cloudy</span>
+                                </div>
+                                <div class="weather__daily-temp">
+                                    <img class="weather__temp-direction" src="./img/arrow-up.svg" alt="temp-direction">
+                                    <h4 class="weather__temp-degree">
+                                        <span class="degree__temp">23</span>
+                                        <span>°</span>
+                                    </h4>
+                                    <h4 class="weather__temp-feels">
+                                        <span class="feels__temp">17</span>
+                                        <span>°</span>
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="weather__daily-item">
+                                <div class="weather__daily-day">Sat</div>
+                                <div class="weather__daily-status">
+                                    <img src="./img/sunny.svg" alt="status">
+                                    <span>Sunny</span>
+                                </div>
+                                <div class="weather__daily-temp">
+                                    <img class="weather__temp-direction" src="./img/arrow-down.svg"
+                                        alt="temp-direction">
+                                    <h4 class="weather__temp-degree">
+                                        <span class="degree__temp">26</span>
+                                        <span>°</span>
+                                    </h4>
+                                    <h4 class="weather__temp-feels">
+                                        <span class="feels__temp">21</span>
+                                        <span>°</span>
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="weather__daily-item">
+                                <div class="weather__daily-day">Sun</div>
+                                <div class="weather__daily-status">
+                                    <img src="./img/sunny.svg" alt="status">
+                                    <span>Sunny</span>
+                                </div>
+                                <div class="weather__daily-temp">
+                                    <img class="weather__temp-direction" src="./img/arrow-down.svg"
+                                        alt="temp-direction">
+                                    <h4 class="weather__temp-degree">
+                                        <span class="degree__temp">28</span>
+                                        <span>°</span>
+                                    </h4>
+                                    <h4 class="weather__temp-feels">
+                                        <span class="feels__temp">23</span>
+                                        <span>°</span>
+                                    </h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="weather__status">
-                        <img src="./img/cloudy.svg" alt="weather-icon">
-                        <time datetime="2025-06-28">Sat, Jun 28</time>
-                    </div>
-                </section>
-                <!-- <section class="weather__daily">
-                    <div class="weather__daily-header">
-                        <h3 class="weather__daily-history">
-                            <span class="weather__days">7</span>
-                            <span>-Day Forecast</span>
-                        </h3>
-                        <span class="weather__overview">Weekly Overview</span>
-                    </div>
-                    <div class="weather__daily-items">
-                        <div class="weather__daily-item">
-                            <div class="weather__daily-day">Today</div>
-                            <div class="weather__daily-status">
-                                <img src="./img/cloudy.svg" alt="status">
-                                <span>Cloudy</span>
-                            </div>
-                            <div class="weather__daily-temp">
-                                <img class="weather__temp-direction" src="./img/arrow-down.svg" alt="temp-direction">
-                                <h4 class="weather__temp-degree">
-                                    <span class="degree__temp">22</span>
-                                    <span>°</span>
-                                </h4>
-                                <h4 class="weather__temp-feels">
-                                    <span class="feels__temp">18</span>
-                                    <span>°</span>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <aside class="weather__details">
-                    <h3 class="weather__details-title">weather details</h3>
-                    <div class="weather__details-items">
-                        <div class="weather__details-item">
-                            <div class="details__item-cover">
-                                <img src="./img/humidity.svg" alt="humidity">
-                                <span>Humidity</span>
-                            </div>
-                            <div class="details__item-humidity">
-                                <span>65%</span>
-                                <span class="status">Normal</span>
-                            </div>
-                        </div>
-                        <div class="weather__details-item">
-                            <div class="details__item-cover">
-                                <img src="./img/wind-speed.svg" alt="wind-speed">
-                                <span>Wind Speed</span>
-                            </div>
-                            <div class="details__item-wind">
-                                <span>15 km/h</span>
-                                <span class="status">Moderate</span>
-                            </div>
-                        </div>
-                        <div class="weather__details-item">
-                            <div class="details__item-cover">
-                                <img src="./img/pressure.svg" alt="pressure">
-                                <span>Pressure</span>
-                            </div>
-                            <div class="details__item-pressure">
-                                <span>1013 hPa</span>
-                                <span class="status">Normal</span>
-                            </div>
-                        </div>
-                    </div>
+                    </section>
+                </div>
 
-                    <div class="weather__tips">
-                        <h3 class="weather__tips-title">Weather Tips</h3>
-                        <div class="weather__tips-body">
-                            <img src="./img/enjoy.svg" alt="enjoy">
-                            <p>Enjoy the weather today!</p>
+                <div class="container__right">
+                    <aside class="weather__details">
+                        <div class="weather__details-header">
+                            <img src="./img/details.svg" alt="details">
+                            <h3 class="weather__details-title">weather details</h3>
                         </div>
-                    </div>
-                </aside> -->
+                        <div class="weather__details-items">
+                            <div class="weather__details-item">
+                                <div class="details__item-cover">
+                                    <img src="./img/humidity.svg" alt="humidity">
+                                    <span>Humidity</span>
+                                </div>
+                                <div class="details__item-humidity details">
+                                    <span>65%</span>
+                                    <span class="status">Normal</span>
+                                </div>
+                                <span class="details__decore"></span>
+                            </div>
+                            <div class="weather__details-item">
+                                <div class="details__item-cover">
+                                    <img src="./img/wind-speed.svg" alt="wind-speed">
+                                    <span>Wind Speed</span>
+                                </div>
+                                <div class="details__item-wind details">
+                                    <span>15 km/h</span>
+                                    <span class="status">Moderate</span>
+                                </div>
+                                <span class="details__decore"></span>
+                            </div>
+                            <div class="weather__details-item">
+                                <div class="details__item-cover">
+                                    <img src="./img/pressure.svg" alt="pressure">
+                                    <span>Pressure</span>
+                                </div>
+                                <div class="details__item-pressure details">
+                                    <span>1013 hPa</span>
+                                    <span class="status">Normal</span>
+                                </div>
+                                <span class="details__decore"></span>
+                            </div>
+                        </div>
+                    </aside>
+                    <aside class="weather__tips">
+                        <div class="weather__tips-cover">
+                            <h3 class="weather__tips-title">Weather Tips</h3>
+                            <div class="weather__tips-body">
+                                <img src="./img/enjoy.svg" alt="enjoy">
+                                <p>Enjoy the weather today!</p>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
             </div>
         </div>
     </main>
