@@ -748,6 +748,17 @@ main {
   user-select: none;
 }
 
+.modal__temperature {
+  display: flex;
+  gap: 10px;
+  padding: 0px 0px 20px 20px;
+}
+
+.modal__temperature > div {
+  display: flex;
+  gap: 1px;
+}
+
 .modal__popular-inner span:active {
   background-color: rgba(197, 197, 197, 0.4);
 }
