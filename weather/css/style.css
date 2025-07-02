@@ -91,7 +91,7 @@ header {
   display: none;
   position: absolute;
   min-width: 100px;
-  top: calc(100% + 2px);
+  top: calc(100% + 4px);
   right: 0;
   color: #000;
   font-size: 10px;
@@ -116,6 +116,7 @@ header {
 
 .header__icon-cover.menu .settings li:not(:last-child) {
   margin-bottom: 5px;
+  user-select: none;
 }
 
 .header__icon-cover.menu .settings li i {
@@ -129,6 +130,7 @@ header {
 
 .header__icon-cover.menu .settings > li:nth-child(2) {
   position: relative;
+  user-select: none;
 }
 
 .header__icon-cover.menu .settings > li:nth-child(2) ul {
@@ -602,7 +604,7 @@ main {
 .modal {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 100%;
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg, #EEF2FF 0%, #FFFFFF 50%, #EEF2FF 100%);
@@ -623,22 +625,24 @@ main {
 
 .modal__input label {
   position: absolute;
-  top: 55%;
+  top: 50%;
   transform: translateY(-50%);
   left: 5px;
 }
 
 .modal__input label img {
-  width: 16px;
-  height: 16px;
+  width: 25px;
+  height: 25px;
 }
 
 .modal__input input {
+  font-family: "Montserrat", sans-serif;
   width: 100%;
-  padding: 8px 8px 8px 25px;
+  padding: 10px 8px 10px 33px;
   border-radius: 99px;
   background-color: rgba(210, 210, 210, 0.4);
-  font-size: 14px;
+  font-size: 16px;
+  color: #5d5d5d;
 }
 
 .modal__input input:focus {
@@ -646,7 +650,8 @@ main {
 }
 
 .modal__input input::placeholder {
-  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
 }
 
 .modal__header span {
@@ -656,6 +661,8 @@ main {
   border-radius: 3px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  user-select: none;
 }
 
 .modal__header span:active {
@@ -680,13 +687,18 @@ main {
 
 .modal__history-header span {
   font-weight: 500;
+  color: rgba(0, 0, 0, 0.4784313725);
   font-size: 16px;
+  user-select: none;
 }
 
 .modal__history-header i {
   padding: 4px;
+  border-radius: 3px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  user-select: none;
 }
 
 .modal__history-header i:active {
@@ -704,6 +716,12 @@ main {
   background-color: #efefef;
   border-radius: 8px;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  user-select: none;
+}
+
+.modal__history-cities span:active {
+  background-color: rgba(197, 197, 197, 0.4);
 }
 
 .modal__popular-title {
@@ -712,6 +730,7 @@ main {
   padding-bottom: 10px;
   font-weight: 500;
   font-size: 16px;
+  user-select: none;
 }
 
 .modal__popular-inner {
@@ -725,6 +744,20 @@ main {
   background-color: #efefef;
   border-radius: 8px;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  user-select: none;
+}
+
+.modal__popular-inner span:active {
+  background-color: rgba(197, 197, 197, 0.4);
+}
+
+.reveal {
+  left: 0%;
+}
+
+.lock {
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -812,6 +845,12 @@ main {
   }
   .modal__history-header i:hover {
     background-color: rgba(210, 210, 210, 0.1921568627);
+  }
+  .modal__history-cities span:hover {
+    background-color: rgba(197, 197, 197, 0.4);
+  }
+  .modal__popular-inner span:hover {
+    background-color: rgba(197, 197, 197, 0.4);
   }
 }
 
