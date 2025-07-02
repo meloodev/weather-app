@@ -253,35 +253,14 @@ header {
 
 .weather__forecast {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  gap: 2px;
   margin-bottom: 5px;
 }
 
-.weather__units {
-  padding-top: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.weather__units button {
-  font-size: 23px;
-  cursor: pointer;
-  color: #475569;
-  background-color: transparent;
-  transition: all 0.2s;
-  border-radius: 3px;
-  padding: 0px 2px;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-.weather__units button:nth-child(1) {
-  margin-right: 5px;
-}
-
-.weather__units span {
-  margin-right: 3px;
-  color: #475569;
+.weather__forecast span {
+  color: #F97316;
+  font-size: 32px;
+  font-weight: 900;
 }
 
 h1 {
