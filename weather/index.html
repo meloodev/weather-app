@@ -28,24 +28,24 @@
                 </div>
 
                 <div class="weather__header__icons">
-                    <div class="header__icon-cover">
+                    <!-- <div class="header__icon-cover">
                         <i class="fa-solid fa-plus"></i>
                     </div>
                     <div class="header__icon-cover">
                         <i class="fa-solid fa-moon"></i>
-                        <!-- <i class="fa-solid fa-sun"></i> -->
-                    </div>
+                        <i class="fa-solid fa-sun"></i>
+                    </div> -->
                     <div class="header__icon-cover menu">
                         <i class="fa-solid fa-ellipsis-vertical"></i>
 
                         <ul class="settings">
                             <li>
                                 <!-- <i class="fa-solid fa-chevron-left"></i> -->
-                                <span>settings</span>
+                                <span class="weather__settings">settings</span>
                             </li>
                             <li>
                                 <i class="fa-solid fa-chevron-left"></i>
-                                <span>themes</span>
+                                <span class="weather__themes">themes</span>
                                 <ul class="submenu">
                                     <li>
                                         <span>dark</span>
@@ -297,7 +297,56 @@
         </div>
     </main>
 
+    <div class="modal">
+        <div class="container">
+            <div class="modal__inner">
+                <div class="modal__header">
+                    <div class="modal__input">
+                        <label for="loc" aria-label="Search">
+                            <img src="./img/search.svg" alt="search-icon">
+                        </label>
+                        <input id="loc" type="search" placeholder="Please enter your location">
+                    </div>
+                    <span>Cancel</span>
+                </div>
 
+                <div class="modal__history">
+                    <div class="modal__history-header">
+                        <span>Search history</span>
+                        <i class="fa-solid fa-trash"></i>
+                    </div>
+                    <div class="modal__history-cities">
+                        <span>New York</span>
+                        <span>London</span>
+                        <span>Paris</span>
+                    </div>
+                </div>
+
+                <div class="modal__popular">
+                    <div class="modal__popular-title">Popular cities</div>
+                    <div class="modal__popular-inner">
+                        <span>New York</span>
+                        <span>London</span>
+                        <span>Paris</span>
+                        <span>Tokyo</span>
+                        <span>Dubai</span>
+                        <span>Los Angeles</span>
+                        <span>Rome</span>
+                        <span>Istanbul</span>
+                        <span>Bangkok</span>
+                        <span>Barcelona</span>
+                        <span>Singapore</span>
+                        <span>Sydney</span>
+                        <span>Berlin</span>
+                        <span>Amsterdam</span>
+                        <span>Hong Kong</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/app.js"></script>
 </body>
 
 </html>
