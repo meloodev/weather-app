@@ -181,46 +181,10 @@ header {
   background-color: rgba(210, 210, 210, 0.1921568627);
 }
 
-.weather__header-top {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 215px;
-}
-
 .weather__header-top > h2 {
   font-weight: 700;
   font-size: 23px;
   color: #1E293B;
-}
-
-.weather__search {
-  position: relative;
-}
-
-.weather__search label img {
-  width: 16px;
-  height: auto;
-}
-
-.weather__search label {
-  position: absolute;
-  top: 55%;
-  transform: translateY(-50%);
-  left: 4px;
-}
-
-.weather__search input {
-  padding: 5px 0px 5px 23px;
-  background-color: transparent;
-  border-radius: 4px;
-  color: #64748B;
-  font-weight: 400;
-  width: 100%;
-}
-
-.weather__search input::placeholder {
-  color: #64748B;
 }
 
 .weather__temp {
@@ -255,6 +219,41 @@ header {
   display: flex;
   gap: 2px;
   margin-bottom: 5px;
+}
+
+.weather__loading {
+  display: flex;
+  gap: 1px;
+}
+
+.weather__loading img {
+  width: 10px;
+  height: 10px;
+  padding-top: 4px;
+  animation: shakeX 1.2s infinite;
+}
+
+@keyframes shakeX {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-1px);
+  }
+  50% {
+    transform: translateX(1px);
+  }
+  75% {
+    transform: translateX(-1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.weather__loading span {
+  font-size: 10px;
+  font-weight: 300;
+  color: #1E293B;
 }
 
 .weather__forecast span {
