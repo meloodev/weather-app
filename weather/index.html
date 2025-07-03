@@ -37,9 +37,9 @@
                                 <!-- <i class="fa-solid fa-chevron-left"></i> -->
                                 <span>settings</span>
                             </li>
-                            <li>
+                            <li class="weather__theme">
                                 <i class="fa-solid fa-chevron-left"></i>
-                                <span class="weather__themes">themes</span>
+                                <span>themes</span>
                                 <ul class="submenu">
                                     <li class="dark">
                                         <span>dark</span>
@@ -71,15 +71,24 @@
                                 <img src="./img/location.svg" alt="location">
                                 <h2>New York</h2>
                             </div>
-                             <div class="weather__loading">
-                                <img src="./img/cloudy.svg" alt="loading">
-                                <span>updating...</span>
-                            </div>
+
                             <div class="weather__forecast">
-                                <h1>22</h1>
+                                <div class="weather__forecast-temp">
+                                    <div class="weather__loader done">
+                                        <div class="weather__loader-udating">
+                                            <img src="./img/cloudy.svg" alt="loading">
+                                            <span>updating...</span>
+                                        </div>
+                                        <div class="weather__loader-done">
+                                            <img src="./img/done.svg" alt="updated">
+                                            <span>updated</span>
+                                        </div>
+                                    </div>
+                                    <h1>22</h1>
+                                </div>
                                 <span>°</span>
                             </div>
-                           
+
                             <div class="weather__info">
                                 <span class="weather__sky">Cloudy</span>
                                 <div class="weather__feels">

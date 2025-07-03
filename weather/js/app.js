@@ -11,15 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const darkTheme = document.querySelector('.submenu .dark');
     const lightTheme = document.querySelector('.submenu .light');
 
-      const darkIcon = document.querySelector('.submenu .dark i');
+    const darkIcon = document.querySelector('.submenu .dark i');
     const lightIcon = document.querySelector('.submenu .light i');
 
     const body = document.body;
 
     const weatherSettings = document.querySelector('header .weather__settings');
+    const weatherTheme = document.querySelector('header .weather__theme');
 
     menuBtn.addEventListener('click', () => {
-        menu.classList.toggle('show');
+        menu.classList.add('show');
     });
 
     body.addEventListener('click', (e) => {
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!menuBtn.contains(target) && !menu.contains(target)) {
             menu.classList.remove('show');
+             submenu.classList.remove('show');
         }
     });
 
@@ -41,6 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.remove('reveal');
     });
 
+    weatherTheme.addEventListener('click', () => {
+        submenu.classList.toggle('show');
+    });
+
 
     submenu.addEventListener('click', (e) => {
         const target = e.target;
@@ -50,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (lightTheme.contains(target)) {
-             lightIcon.classList.add('fa-check');
-             darkIcon.classList.remove('fa-check');
+            lightIcon.classList.add('fa-check');
+            darkIcon.classList.remove('fa-check');
         }
     });
 

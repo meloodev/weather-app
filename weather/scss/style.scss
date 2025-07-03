@@ -157,9 +157,10 @@ header {
 //     display: block;
 // }
 
-.header__icon-cover.menu .settings li:nth-child(2):active>.submenu,
-.header__icon-cover.menu .settings li:nth-child(2):hover>.submenu,
-.header__icon-cover.menu .settings li:nth-child(2):focus>.submenu {
+.header__icon-cover.menu .settings li:nth-child(2):active>.submenu // .header__icon-cover.menu .settings li:nth-child(2):hover>.submenu,
+
+// .header__icon-cover.menu .settings li:nth-child(2):focus>.submenu 
+    {
     // 2 submenu
     display: block;
 }
@@ -273,37 +274,97 @@ header {
     margin-bottom: 5px;
 }
 
-.weather__loading {
+
+
+
+
+
+
+.weather__loader-udating {
     display: flex;
-    // align-items: center;
+    align-items: center;
     gap: 1px;
 }
 
-.weather__loading img {
+
+.weather__loader-done {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+}
+
+.weather__loader-done {
+    display: none;
+}
+
+.weather__loader.done .weather__loader-done {
+    display: flex;
+}
+
+.weather__loader.done .weather__loader-udating {
+    display: none;
+}
+
+
+.weather__loader-udating img {
+    padding: 2px 0px;
     width: 10px;
     height: 10px;
-    padding-top: 4px;
-     animation: shakeX 1.2s infinite;
 }
+
+.weather__loader-done img {
+    padding: 2px 0px;
+    width: 10px;
+    height: 10px;
+}
+
+.weather__loader-udating img {
+    animation: shakeX 1.2s infinite;
+}
+
+
+
+.weather__loading {}
 
 @keyframes shakeX {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-1px); }
-  50% { transform: translateX(1px); }
-  75% { transform: translateX(-1px); }
-  100% { transform: translateX(0); }
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-1px);
+    }
+
+    50% {
+        transform: translateX(1px);
+    }
+
+    75% {
+        transform: translateX(-1px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
-.weather__loading span {
+.weather__loader span {
     font-size: 10px;
     font-weight: 300;
     color: #1E293B;
 }
 
-.weather__forecast span {
+.weather__forecast>span {
     color: #F97316;
     font-size: 32px;
     font-weight: 900;
+}
+
+.weather__forecast-temp {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-height: 86px;
 }
 
 // .weather__units {
@@ -339,6 +400,7 @@ h1 {
     line-height: 72px;
     color: #F97316;
     font-weight: 500;
+    margin-top: auto;
 }
 
 .weather__units button:active {
