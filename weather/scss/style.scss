@@ -305,6 +305,10 @@ header {
     display: none;
 }
 
+.weather__loader {
+    display: none;
+}
+
 
 .weather__loader-udating img {
     padding: 2px 0px;
@@ -358,6 +362,7 @@ header {
     color: #F97316;
     font-size: 32px;
     font-weight: 900;
+    padding-top: 10px;
 }
 
 .weather__forecast-temp {
@@ -729,6 +734,9 @@ main {
     display: block !important;
 }
 
+.hide {
+    display: none !important;
+}
 .modal {
     position: fixed;
     top: 0;
