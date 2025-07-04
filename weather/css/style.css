@@ -245,6 +245,7 @@ header {
 
 .weather__loader {
   display: none;
+  padding-top: 8px;
 }
 
 .weather__loader-udating img {
@@ -290,14 +291,14 @@ header {
   color: #F97316;
   font-size: 32px;
   font-weight: 900;
-  padding-top: 10px;
+  margin-top: 26px;
 }
 
 .weather__forecast-temp {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  min-height: 86px;
+  min-height: 96px;
 }
 
 h1 {
