@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cityTemp.textContent = Math.round(cleaned.current.temp);
         feels.textContent = cleaned.current.feelsLike.toFixed(1);
         weatherSky.textContent = cleaned.current.condition;
-        weatherIcon.src = cleaned.current.icon;
+        weatherIcon.src = cleaned.current.icon.replace('//', 'https://');
         weatherDate.textContent = cleaned.date;
         weatherDate.setAttribute('datetime', cleaned.dateattr);
 
@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
             weatherItems += `<div class="weather__daily-item">
                                 <div class="weather__daily-day">${item.weekday}</div>
                                 <div class="weather__daily-status">
-                                    <img src="${item.icon}" alt="status">
+                                    <img src="${item.icon.replace('//','https://')}" alt="status">
                                     <span>${item.condition}</span>
                                 </div>
                                 <div class="weather__daily-temp">
