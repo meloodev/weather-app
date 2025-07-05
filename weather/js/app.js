@@ -41,6 +41,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const weatherDailyItems = document.querySelector('.weather__daily .weather__daily-items');
     ///////////
 
+    const weatherLoader = document.querySelector('.weather__loader');
+
+    function loading() {
+        weatherLoader.classList.add('show');
+    }
+
+    function done() {
+        weatherLoader.classList.add('done');
+        setTimeout(() => {
+            weatherLoader.classList.remove('show');
+            weatherLoader.classList.remove('done');
+        }, 1100);
+    }
+
     menuBtn.addEventListener('click', () => {
         menu.classList.add('show');
     });
@@ -129,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function getData() {
+        loading();
         try {
             const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=${days}&aqi=no&alerts=no`);
 
@@ -149,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("data not found");
             return;
         }
-
+        done();
         const cleaned = {
             location: data.location.name,
             date: new Date(data.location.localtime).toLocaleDateString('en-US', {
