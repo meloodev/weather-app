@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const apiKey = "fb6bac2044cb4b98a8754603252606";
+    const apiKey = "3f9cf34620e14463966140028250507";
     const city = "Batumi";
     const days = 7;
 
