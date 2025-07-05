@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         weatherDailyItems.innerHTML = weatherItems;
         // console.log(weatherItems);
-        console.log(cleaned);
+        // console.log(cleaned);
     });
 
 
