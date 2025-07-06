@@ -1,5 +1,8 @@
 'use strict';
+import { WeatherApp } from "../service/weatherServices.js";
 document.addEventListener('DOMContentLoaded', () => {
+    const app = new WeatherApp();
+
 
     const menuBtn = document.querySelector('.header__icon-cover.menu');
     const menu = document.querySelector('header .settings');
@@ -46,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function loading() {
         weatherLoader.classList.add('show');
     }
+
 
     function done() {
         weatherLoader.classList.add('done');
@@ -97,142 +101,55 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const apiKey = "3f9cf34620e14463966140028250507";
-    const city = "Batumi";
-    const days = 7;
 
-    function humidityStatus(value) {
-        switch (true) {
-            case (value <= 30):
-                return "Dry";
-            case (value <= 60):
-                return "Comfortable";
-            case (value <= 80):
-                return "Humid";
-            default:
-                return "Very Humid";
-        }
-    }
 
-    function windStatus(kph) {
-        switch (true) {
-            case (kph <= 5):
-                return "Calm";
-            case (kph <= 19):
-                return "Moderate";
-            case (kph <= 38):
-                return "Fresh";
-            case (kph <= 61):
-                return "Strong";
-            case (kph <= 88):
-                return "Gale";
-            default:
-                return "Storm";
-        }
-    }
-
-    function pressureStatus(hPa) {
-        switch (true) {
-            case (hPa < 1000):
-                return "Low";
-            case (hPa <= 1020):
-                return "Normal";
-            default:
-                return "High";
-        }
-    }
-
-    async function getData() {
+    async function renderWeather(city = 'batumi') {
         loading();
-        try {
-            const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=${days}&aqi=no&alerts=no`);
-
-            if (!response.ok) {
-                throw new Error('Error fetching data');
-            }
-
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error('An error occurred:', error);
-            return null;
-        }
-    }
-
-    getData().then(data => {
-        if (!data) {
+        // app.getWeather().then(cleaned => {
+        const cleaned = await app.getWeather(city);
+        if (!cleaned) {
             console.log("data not found");
+            done();
             return;
         }
-        done();
-        const cleaned = {
-            location: data.location.name,
-            date: new Date(data.location.localtime).toLocaleDateString('en-US', {
-                weekday: 'short',
-                month: 'short',
-                day: 'numeric'
-            }),
-            dateattr: data.location.localtime.split(' ')[0],
 
-            current: {
-                temp: data.current.temp_c,
-                feelsLike: data.current.feelslike_c,
-                condition: data.current.condition.text,
-                icon: data.current.condition.icon,
-                humidity: data.current.humidity,
-                wind: data.current.wind_kph,
-                pressure: data.current.pressure_mb
-            },
+        try {
+            console.log(cleaned);
+            const { humidityStatus, windStatus, pressureStatus } = app;
+            const { temp, feelsLike, condition, icon, humidityTmp, windTmp, pressureTmp } = cleaned.current;
 
-            forecast: data.forecast.forecastday.map(day => ({
-                date: day.date,
-                weekday: new Date(day.date).toLocaleDateString('en-US', { weekday: 'short' }),
-                formattedDate: new Date(day.date).toLocaleDateString('en-US', {
-                    weekday: 'short',
-                    month: 'short',
-                    day: 'numeric'
-                }),
-                maxTemp: day.day.maxtemp_c,
-                minTemp: day.day.mintemp_c,
-                condition: day.day.condition.text,
-                icon: day.day.condition.icon
-            }))
-        };
+            /////////////////////
+            weatherCity.textContent = cleaned.location;
+            cityTemp.textContent = Math.round(temp);
+            feels.textContent = feelsLike.toFixed(1);
+            weatherSky.textContent = condition;
+            weatherIcon.src = icon.replace('//', 'https://');
+            weatherDate.textContent = cleaned.date;
+            weatherDate.setAttribute('datetime', cleaned.dateattr);
 
 
 
-        /////////////////////
-        weatherCity.textContent = cleaned.location;
-        cityTemp.textContent = Math.round(cleaned.current.temp);
-        feels.textContent = cleaned.current.feelsLike.toFixed(1);
-        weatherSky.textContent = cleaned.current.condition;
-        weatherIcon.src = cleaned.current.icon.replace('//', 'https://');
-        weatherDate.textContent = cleaned.date;
-        weatherDate.setAttribute('datetime', cleaned.dateattr);
-
-
-        humidity.textContent = `${cleaned.current.humidity} %`;
-        wind.textContent = `${cleaned.current.wind} km/h`;
-        pressure.textContent = `${cleaned.current.pressure} hPa`;
-        humidityStatusVal.textContent = humidityStatus(cleaned.current.humidity);
-        windStatusVal.textContent = windStatus(cleaned.current.wind);
-        pressureStatusVal.textContent = pressureStatus(cleaned.current.pressure);
+            humidity.textContent = `${humidityTmp} %`;
+            wind.textContent = `${windTmp} km/h`;
+            pressure.textContent = `${pressureTmp} hPa`;
+            humidityStatusVal.textContent = humidityStatus(humidityTmp);
+            windStatusVal.textContent = windStatus(windTmp);
+            pressureStatusVal.textContent = pressureStatus(pressureTmp);
 
 
 
-        weatherDays.textContent = cleaned.forecast.length;
+            weatherDays.textContent = cleaned.forecast.length;
 
-        let weatherItems = '';
-        let today = 'Today';
-        cleaned.forecast.forEach((item, i) => {
-            if (i === 0) {
-                item.weekday = today;
-            }
+            let today = 'Today';
+            const weatherItems = cleaned.forecast.map((item, i) => {
+                if (i === 0) {
+                    item.weekday = today;
+                }
 
-            weatherItems += `<div class="weather__daily-item">
+                return `<div class="weather__daily-item">
                                 <div class="weather__daily-day">${item.weekday}</div>
                                 <div class="weather__daily-status">
-                                    <img src="${item.icon.replace('//','https://')}" alt="status">
+                                    <img src="${item.icon.replace('//', 'https://')}" alt="status">
                                     <span>${item.condition}</span>
                                 </div>
                                 <div class="weather__daily-temp">
@@ -248,12 +165,16 @@ document.addEventListener('DOMContentLoaded', () => {
                                     </h4>
                                 </div>
                             </div>`;
-        });
+            }).join('');
 
-        weatherDailyItems.innerHTML = weatherItems;
-        // console.log(weatherItems);
-        // console.log(cleaned);
-    });
+            weatherDailyItems.innerHTML = weatherItems;
 
+        } catch (error) {
+            console.error('Error processing weather data:', error);
+        } finally {
+            done();
+        }
+    };
 
+    renderWeather();
 });
