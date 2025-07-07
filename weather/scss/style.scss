@@ -791,7 +791,7 @@ main {
     font-size: 16px;
 }
 
-.modal__header span {
+.modal__save-box span {
     font-weight: 500;
     color: #00adee;
     padding: 3px 5px;
@@ -802,7 +802,23 @@ main {
     user-select: none;
 }
 
-.modal__header span:active {
+.modal__save-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.modal__save-box .modal__save {
+    color: tomato;
+    background-color: #e2e2e231;
+    display: none;
+}
+
+.modal__save-box .modal__save:active {
+    scale: .95;
+}
+
+.modal__save-box span:active {
     background-color: #d2d2d231;
 }
 
@@ -856,6 +872,8 @@ main {
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     user-select: none;
+    border: 1px solid transparent;
+    transition: all 0.2s ease-in-out;
 }
 
 .modal__history-cities span:active {
@@ -883,8 +901,10 @@ main {
     background-color: #efefef;
     border-radius: 8px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     user-select: none;
+    border: 1px solid transparent;
 }
 
 .modal__temperature {
@@ -1027,7 +1047,7 @@ main {
         border: 1px solid rgba(59, 130, 246, 0.2);
     }
 
-    .modal__header span:hover {
+    .modal__save-box span:hover {
         background-color: #d2d2d231;
     }
 
@@ -1035,11 +1055,16 @@ main {
         background-color: #d2d2d231;
     }
 
-    .modal__history-cities span:hover {
-        background-color: #c5c5c566;
-    }
+    // .modal__history-cities span:hover {
+    //     background-color: #84848466;
+    //     border: 1px solid #00adee;
+    // }
 
-    .modal__popular-inner span:hover {
-        background-color: #c5c5c566;
+
+    .modal__popular-inner span:hover,
+    .modal__history-cities span:hover {
+        background-color: #84848466;
+        border: 1px solid #00adee;
+
     }
 }

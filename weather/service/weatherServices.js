@@ -35,7 +35,8 @@ class WeatherApp {
             dateattr: item.location.localtime.split(' ')[0],
 
             current: {
-                temp: item.current.temp_c,
+                tempC: item.current.temp_c,
+                tempF: item.current.temp_f,
                 feelsLike: item.current.feelslike_c,
                 condition: item.current.condition.text,
                 icon: item.current.condition.icon,

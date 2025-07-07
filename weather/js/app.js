@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    async function renderWeather(city = 'batumi') {
+    async function renderWeather(city = 'batumi', scale = 'C') {
         loading();
         // app.getWeather().then(cleaned => {
         const cleaned = await app.getWeather(city);
@@ -116,11 +116,12 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             console.log(cleaned);
             const { humidityStatus, windStatus, pressureStatus } = app;
-            const { temp, feelsLike, condition, icon, humidityTmp, windTmp, pressureTmp } = cleaned.current;
+            const { tempC, tempF, feelsLike, condition, icon, humidityTmp, windTmp, pressureTmp } = cleaned.current;
 
+            const scaleTemp = scale === 'C' ? tempC : tempF;
             /////////////////////
             weatherCity.textContent = cleaned.location;
-            cityTemp.textContent = Math.round(temp);
+            cityTemp.textContent = Math.round(scaleTemp);
             feels.textContent = feelsLike.toFixed(1);
             weatherSky.textContent = condition;
             weatherIcon.src = icon.replace('//', 'https://');
@@ -176,5 +177,75 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    renderWeather();
+    const settings = loadSettings();
+    renderWeather(settings.city, settings.tempScale);
+
+    const modalInner = document.querySelector('.modal__inner');
+    const modalPopular = document.querySelector('.modal__popular-inner');
+    const modalHistory = document.querySelector('.modal__history .modal__history-cities');
+    const trash = document.querySelector('.fa-solid.fa-trash');
+    const saveBtn = document.querySelector('.modal__save-box .modal__save');
+
+    const celsius = document.querySelector('.modal__temperature .celsius');
+    const fahrenheit = document.querySelector('.modal__temperature .fahrenheit');
+    let city = '';
+    let tempScale = 'C';
+
+    function saveSettings(city, tempScale) {
+        localStorage.setItem('weatherAppSettings', JSON.stringify({ city, tempScale }));
+    }
+
+    function loadSettings() {
+        const saved = localStorage.getItem('weatherAppSettings');
+        return saved ? JSON.parse(saved) : null;
+    }
+
+    modalInner.addEventListener('click', (e) => {
+        const target = e.target;
+
+        const span = e.target.closest('span');
+        if ((modalHistory.contains(span) || modalPopular.contains(span)) && span) { // all elements
+            city = span.textContent;
+            // console.log(city);
+            saveBtn.classList.add('show');
+        }
+
+        if (modalPopular.contains(span) && span) { // popular elements
+            const elem = document.createElement('span');
+            elem.textContent = span.textContent;
+            // modalHistory.innerHTML = '';
+            if (modalHistory.children.length === 1) {
+                const last = modalHistory.lastElementChild;
+                if (last) {
+                    modalHistory.removeChild(last);
+                }
+            }
+            modalHistory.prepend(elem);
+        }
+
+        if (trash.contains(target)) { // popular trash
+            modalHistory.innerHTML = '';
+            saveBtn.classList.remove('show');
+        }
+
+        if (trash.contains(target)) { // popular trash
+            modalHistory.innerHTML = '';
+            saveBtn.classList.remove('show');
+        }
+
+        if (celsius.contains(target)) { // celsius
+            tempScale = "C";
+        }
+
+        if (fahrenheit.contains(target)) { // fahrenheit
+            tempScale = "F";
+        }
+
+
+        if (saveBtn.contains(target)) { // save btn
+            saveSettings(city, tempScale);
+            renderWeather(city, tempScale);
+        }
+    });
+
 });
