@@ -3,6 +3,8 @@ import { WeatherApp } from "../service/weatherServices.js";
 document.addEventListener('DOMContentLoaded', () => {
     const app = new WeatherApp();
 
+    const { saveSettings, loadSettings, removeSettings } = app;
+
 
     const menuBtn = document.querySelector('.header__icon-cover.menu');
     const menu = document.querySelector('header .settings');
@@ -45,6 +47,22 @@ document.addEventListener('DOMContentLoaded', () => {
     ///////////
 
     const weatherLoader = document.querySelector('.weather__loader');
+
+    const modalInner = document.querySelector('.modal__inner');
+    const modalPopular = document.querySelector('.modal__popular-inner');
+    const modalHistory = document.querySelector('.modal__history .modal__history-cities');
+    // const modalHistoryCover = document.querySelector('.modal__history');
+    const trash = document.querySelector('.fa-solid.fa-trash');
+    const saveBtn = document.querySelector('.modal__save-box .modal__save');
+
+    const celsius = document.querySelector('.modal__temperature .celsius');
+    const fahrenheit = document.querySelector('.modal__temperature .fahrenheit');
+
+    const celsiusInp = document.querySelector('.modal__temperature .celsius input');
+    const fahrenheitInp = document.querySelector('.modal__temperature .fahrenheit input');
+
+    let city = '';
+    let tempScale = 'C';
 
     function loading() {
         weatherLoader.classList.add('show');
@@ -100,6 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
             darkIcon.classList.remove('fa-check');
         }
     });
+
+
 
 
 
@@ -178,27 +198,25 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const settings = loadSettings();
-    renderWeather(settings.city, settings.tempScale);
+    renderWeather(settings?.city, settings?.tempScale);
 
-    const modalInner = document.querySelector('.modal__inner');
-    const modalPopular = document.querySelector('.modal__popular-inner');
-    const modalHistory = document.querySelector('.modal__history .modal__history-cities');
-    const trash = document.querySelector('.fa-solid.fa-trash');
-    const saveBtn = document.querySelector('.modal__save-box .modal__save');
-
-    const celsius = document.querySelector('.modal__temperature .celsius');
-    const fahrenheit = document.querySelector('.modal__temperature .fahrenheit');
-    let city = '';
-    let tempScale = 'C';
-
-    function saveSettings(city, tempScale) {
-        localStorage.setItem('weatherAppSettings', JSON.stringify({ city, tempScale }));
+    if (settings) {
+        const historySpan = document.createElement('span');
+        historySpan.textContent = settings['city'];
+        modalHistory.appendChild(historySpan);
+        celsiusInp.checked = settings.tempScale === 'C';
+        fahrenheitInp.checked = settings.tempScale === 'F';
     }
 
-    function loadSettings() {
-        const saved = localStorage.getItem('weatherAppSettings');
-        return saved ? JSON.parse(saved) : null;
-    }
+
+
+
+    //<input type="radio" name="radio" id="cels" checked=""></input>
+
+
+    // modalHistory
+
+
 
     modalInner.addEventListener('click', (e) => {
         const target = e.target;
@@ -206,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const span = e.target.closest('span');
         if ((modalHistory.contains(span) || modalPopular.contains(span)) && span) { // all elements
             city = span.textContent;
-            // console.log(city);
+            console.log('city');
             saveBtn.classList.add('show');
         }
 
@@ -224,27 +242,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (trash.contains(target)) { // popular trash
+            removeSettings();
             modalHistory.innerHTML = '';
             saveBtn.classList.remove('show');
-        }
+            // modalHistoryCover.classList.add('hide');
 
-        if (trash.contains(target)) { // popular trash
-            modalHistory.innerHTML = '';
-            saveBtn.classList.remove('show');
         }
 
         if (celsius.contains(target)) { // celsius
             tempScale = "C";
+            saveBtn.classList.add('show');
         }
 
         if (fahrenheit.contains(target)) { // fahrenheit
             tempScale = "F";
+            saveBtn.classList.add('show');
         }
 
 
         if (saveBtn.contains(target)) { // save btn
+            if (!city) city = settings.city;
+            // city = settings.city;
             saveSettings(city, tempScale);
             renderWeather(city, tempScale);
+            saveBtn.classList.remove('show');
         }
     });
 

@@ -102,6 +102,19 @@ class WeatherApp {
                 return "High";
         }
     }
+
+    saveSettings(city, tempScale) {
+        localStorage.setItem('weatherAppSettings', JSON.stringify({ city, tempScale }));
+    }
+
+    loadSettings() {
+        const saved = localStorage.getItem('weatherAppSettings');
+        return saved ? JSON.parse(saved) : null;
+    }
+
+    removeSettings() {
+        localStorage.removeItem('weatherAppSettings');
+    }
 }
 
 export { WeatherApp };
