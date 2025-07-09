@@ -126,16 +126,41 @@ class WeatherApp {
     }
 
     saveSettings(city, tempScale) {
-        localStorage.setItem('weatherAppSettings', JSON.stringify({ city, tempScale }));
+        const currentSettings = JSON.parse(localStorage.getItem('weatherAppSettings')) || {};
+        currentSettings.city = city;
+        currentSettings.tempScale = tempScale;
+        localStorage.setItem('weatherAppSettings', JSON.stringify(currentSettings));
     }
 
     loadSettings() {
         const saved = localStorage.getItem('weatherAppSettings');
-        return saved ? JSON.parse(saved) : null;
+        if (!saved) return null;
+        const { city, tempScale } = JSON.parse(saved);
+        return { city, tempScale };
     }
 
+    saveTheme(mode) {
+        const currentSettings = JSON.parse(localStorage.getItem('weatherAppSettings')) || {};
+        currentSettings.theme = mode;
+        localStorage.setItem('weatherAppSettings', JSON.stringify(currentSettings));
+    }
+
+    loadTheme() {
+        const saved = localStorage.getItem('weatherAppSettings');
+        if (!saved) return null;
+        const { theme } = JSON.parse(saved);
+        return { theme };
+    }
+
+
+
     removeSettings() {
-        localStorage.removeItem('weatherAppSettings');
+        const saved = localStorage.getItem('weatherAppSettings');
+        if (!saved) return;
+        const settings = JSON.parse(saved);
+        delete settings.city;
+        delete settings.tempScale;
+        localStorage.setItem('weatherAppSettings', JSON.stringify(settings));
     }
 }
 

@@ -3,7 +3,7 @@ import { WeatherApp } from "../service/weatherServices.js";
 document.addEventListener('DOMContentLoaded', () => {
     const app = new WeatherApp();
 
-    const { saveSettings, loadSettings, removeSettings } = app;
+    const { saveSettings, loadSettings, removeSettings, saveTheme, loadTheme } = app;
 
 
     const menuBtn = document.querySelector('.header__icon-cover.menu');
@@ -108,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalCancel.addEventListener('click', () => {
         body.classList.remove('lock');
         modal.classList.remove('reveal');
+        saveBtn.classList.remove('show');
     });
 
     weatherTheme.addEventListener('click', () => {
@@ -121,12 +122,18 @@ document.addEventListener('DOMContentLoaded', () => {
             darkIcon.classList.add('fa-check');
             lightIcon.classList.remove('fa-check');
             menu.classList.remove('show');
+            body.classList.add('dark');
+            saveTheme('dark');
+
         }
 
         if (lightTheme.contains(target)) {
             lightIcon.classList.add('fa-check');
             darkIcon.classList.remove('fa-check');
             menu.classList.remove('show');
+            body.classList.remove('dark');
+            saveTheme('light');
+
         }
     });
 
@@ -145,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-           // console.log(cleaned);
+            // console.log(cleaned);
             const { humidityStatus, windStatus, pressureStatus } = app;
             const { tempC, tempF, feelsLikeC, feelsLikeF, condition, icon, humidityTmp, windTmp, pressureTmp } = cleaned.current;
 
@@ -177,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let today = 'Today';
             const weatherItems = cleaned.forecast.map((item, i) => {
-               // console.log(item);
+                // console.log(item);
                 if (i === 0) {
                     arrow = scaleTemp < item.maxTemp ? 'up' : 'down';
                     item.weekday = today;
@@ -188,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-               // console.log(item.avgtemp);
+                // console.log(item.avgtemp);
 
                 return `<div class="weather__daily-item">
                                 <div class="weather__daily-day">${item.weekday}</div>
@@ -221,6 +228,19 @@ document.addEventListener('DOMContentLoaded', () => {
             done();
         }
     };
+
+
+    const theme = loadTheme();
+    if (theme?.theme === 'dark') {
+        body.classList.add('dark');
+        darkIcon.classList.add('fa-check');
+        lightIcon.classList.remove('fa-check');
+    }
+    if (theme?.theme === 'light') {
+        body.classList.remove('dark');
+        darkIcon.classList.remove('fa-check');
+        lightIcon.classList.add('fa-check');
+    }
 
     const settings = loadSettings();
     renderWeather(settings?.city, settings?.tempScale);
