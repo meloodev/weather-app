@@ -23,6 +23,12 @@ class WeatherApp {
         return this._weatherItems(res);
     }
 
+    getLocation = async (city = this._city) => {
+        const loc = await this.getResource(`http://api.weatherapi.com/v1/forecast.json?key=${this._apiKey}&q=${city}&days=${this._days}&aqi=no&alerts=no`);
+        return this._loc(loc);
+    }
+
+
 
     _weatherItems = (item) => {
         return {
@@ -37,7 +43,8 @@ class WeatherApp {
             current: {
                 tempC: item.current.temp_c,
                 tempF: item.current.temp_f,
-                feelsLike: item.current.feelslike_c,
+                feelsLikeC: item.current.feelslike_c,
+                feelsLikeF: item.current.feelslike_f,
                 condition: item.current.condition.text,
                 icon: item.current.condition.icon,
                 humidityTmp: item.current.humidity,
@@ -45,7 +52,7 @@ class WeatherApp {
                 pressureTmp: item.current.pressure_mb
             },
 
-            forecast: item.forecast.forecastday.map(day => ({
+            forecast: item.forecast.forecastday.map((day) => ({
                 date: day.date,
                 weekday: new Date(day.date).toLocaleDateString('en-US', { weekday: 'short' }),
                 formattedDate: new Date(day.date).toLocaleDateString('en-US', {
@@ -57,8 +64,22 @@ class WeatherApp {
                 minTemp: day.day.mintemp_c,
                 condition: day.day.condition.text,
                 icon: day.day.condition.icon
-            }))
+            })),
 
+            rain: {
+                rain: item.forecast.forecastday[0].day.daily_will_it_rain,
+                chance: item.forecast.forecastday[0].day.daily_chance_of_rain
+            }
+
+        }
+    }
+
+
+    _loc = (item) => {
+        return {
+            name: item.location.name,
+            region: item.location.region,
+            country: item.location.country
         }
     }
 

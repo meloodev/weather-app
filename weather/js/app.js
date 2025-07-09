@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const menuBtn = document.querySelector('.header__icon-cover.menu');
+    const menuBtnIcon = document.querySelector('.fa-solid.fa-ellipsis-vertical');
     const menu = document.querySelector('header .settings');
     const modal = document.querySelector('body .modal');
     const modalCancel = document.querySelector('body .modal .modal__cancel');
@@ -61,6 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const celsiusInp = document.querySelector('.modal__temperature .celsius input');
     const fahrenheitInp = document.querySelector('.modal__temperature .fahrenheit input');
 
+    const feelsRain = document.querySelector('.weather__feels-rain .daily-rain');
+    const feelsRainChance = document.querySelector('.weather__feels-rain .rain-chance');
+
+    const modalInput = document.querySelector('.modal__input input');
+
     let city = '';
     let tempScale = 'C';
 
@@ -77,8 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1100);
     }
 
-    menuBtn.addEventListener('click', () => {
-        menu.classList.add('show');
+    menuBtn.addEventListener('click', (e) => {
+        if (e.target === menuBtn || e.target === menuBtnIcon) {
+            menu.classList.add('show');
+        }
     });
 
     body.addEventListener('click', (e) => {
@@ -94,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     weatherSettings.addEventListener('click', () => {
         body.classList.add('lock');
         modal.classList.add('reveal');
+        menu.classList.remove('show');
     });
 
     modalCancel.addEventListener('click', () => {
@@ -111,11 +120,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (darkTheme.contains(target)) {
             darkIcon.classList.add('fa-check');
             lightIcon.classList.remove('fa-check');
+            menu.classList.remove('show');
         }
 
         if (lightTheme.contains(target)) {
             lightIcon.classList.add('fa-check');
             darkIcon.classList.remove('fa-check');
+            menu.classList.remove('show');
         }
     });
 
@@ -136,9 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             console.log(cleaned);
             const { humidityStatus, windStatus, pressureStatus } = app;
-            const { tempC, tempF, feelsLike, condition, icon, humidityTmp, windTmp, pressureTmp } = cleaned.current;
+            const { tempC, tempF, feelsLikeC, feelsLikeF, condition, icon, humidityTmp, windTmp, pressureTmp } = cleaned.current;
 
             const scaleTemp = scale === 'C' ? tempC : tempF;
+            const feelsLike = scale === 'C' ? feelsLikeC : feelsLikeF;
             /////////////////////
             weatherCity.textContent = cleaned.location;
             cityTemp.textContent = Math.round(scaleTemp);
@@ -157,9 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
             windStatusVal.textContent = windStatus(windTmp);
             pressureStatusVal.textContent = pressureStatus(pressureTmp);
 
-
-
             weatherDays.textContent = cleaned.forecast.length;
+
+            feelsRain.textContent = cleaned.rain.rain ? 'Yes' : 'No';
+            feelsRainChance.textContent = `(${cleaned.rain.chance}%)`;
 
             let today = 'Today';
             const weatherItems = cleaned.forecast.map((item, i) => {
@@ -268,5 +281,33 @@ document.addEventListener('DOMContentLoaded', () => {
             saveBtn.classList.remove('show');
         }
     });
+
+// app.getLocation('Batumi')
+    let debounceTimer;
+    modalInput.addEventListener('input', (e) => {
+        const value = e.target.value.trim();
+        if (value.length <= 2) return;
+
+        clearTimeout(debounceTimer);
+
+        debounceTimer = setTimeout(async () => {
+            try {
+                const country = await app.getLocation(value);
+                if (!country) {
+                    console.log("data not found");
+                    return;
+                }
+
+                console.log(country);
+
+            } catch (err) {
+                console.error("error get data", err);
+            }
+
+        }, 500);
+    });
+
+
+
 
 });
