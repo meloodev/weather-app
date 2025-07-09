@@ -145,12 +145,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            console.log(cleaned);
+           // console.log(cleaned);
             const { humidityStatus, windStatus, pressureStatus } = app;
             const { tempC, tempF, feelsLikeC, feelsLikeF, condition, icon, humidityTmp, windTmp, pressureTmp } = cleaned.current;
 
             const scaleTemp = scale === 'C' ? tempC : tempF;
             const feelsLike = scale === 'C' ? feelsLikeC : feelsLikeF;
+            let arrow = '';
             /////////////////////
             weatherCity.textContent = cleaned.location;
             cityTemp.textContent = Math.round(scaleTemp);
@@ -176,9 +177,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let today = 'Today';
             const weatherItems = cleaned.forecast.map((item, i) => {
+               // console.log(item);
                 if (i === 0) {
+                    arrow = scaleTemp < item.maxTemp ? 'up' : 'down';
                     item.weekday = today;
+                } else {
+                    arrow = cleaned.forecast[i - 1].maxTemp < item.maxTemp ? 'up' : 'down';
                 }
+
+
+
+
+               // console.log(item.avgtemp);
 
                 return `<div class="weather__daily-item">
                                 <div class="weather__daily-day">${item.weekday}</div>
@@ -187,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <span>${item.condition}</span>
                                 </div>
                                 <div class="weather__daily-temp">
-                                    <img class="weather__temp-direction" src="./img/arrow-down.svg"
+                                    <img class="weather__temp-direction" src="./img/arrow-${arrow}.svg"
                                         alt="temp-direction">
                                     <h4 class="weather__temp-degree">
                                         <span class="degree__temp">${Math.round(item.maxTemp)}</span>
@@ -199,6 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                     </h4>
                                 </div>
                             </div>`;
+
+
             }).join('');
 
             weatherDailyItems.innerHTML = weatherItems;
@@ -282,29 +294,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-// app.getLocation('Batumi')
+    // app.getLocation('Batumi')
     let debounceTimer;
     modalInput.addEventListener('input', (e) => {
-        const value = e.target.value.trim();
-        if (value.length <= 2) return;
+        // const value = e.target.value.trim();
+        // if (value.length <= 2) return;
 
-        clearTimeout(debounceTimer);
+        // clearTimeout(debounceTimer);
 
-        debounceTimer = setTimeout(async () => {
-            try {
-                const country = await app.getLocation(value);
-                if (!country) {
-                    console.log("data not found");
-                    return;
-                }
+        // debounceTimer = setTimeout(async () => {
+        //     try {
+        //         const country = await app.getLocation(value);
+        //         if (!country) {
+        //             console.log("data not found");
+        //             return;
+        //         }
 
-                console.log(country);
+        //         console.log(country);
 
-            } catch (err) {
-                console.error("error get data", err);
-            }
+        //     } catch (err) {
+        //         console.error("error get data", err);
+        //     }
 
-        }, 500);
+        // }, 500);
     });
 
 

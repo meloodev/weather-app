@@ -23,10 +23,10 @@ class WeatherApp {
         return this._weatherItems(res);
     }
 
-    getLocation = async (city = this._city) => {
-        const loc = await this.getResource(`http://api.weatherapi.com/v1/forecast.json?key=${this._apiKey}&q=${city}&days=${this._days}&aqi=no&alerts=no`);
-        return this._loc(loc);
-    }
+    // getLocation = async (city = this._city) => {
+    //     const loc = await this.getResource(`http://api.weatherapi.com/v1/forecast.json?key=${this._apiKey}&q=${city}&days=${this._days}&aqi=no&alerts=no`);
+    //     return this._loc(loc);
+    // }
 
 
 
@@ -63,7 +63,8 @@ class WeatherApp {
                 maxTemp: day.day.maxtemp_c,
                 minTemp: day.day.mintemp_c,
                 condition: day.day.condition.text,
-                icon: day.day.condition.icon
+                icon: day.day.condition.icon,
+                avgtemp: day.day.avgtemp_c
             })),
 
             rain: {
@@ -75,13 +76,13 @@ class WeatherApp {
     }
 
 
-    _loc = (item) => {
-        return {
-            name: item.location.name,
-            region: item.location.region,
-            country: item.location.country
-        }
-    }
+    // _loc = (item) => {
+    //     return {
+    //         name: item.location.name,
+    //         region: item.location.region,
+    //         country: item.location.country
+    //     }
+    // }
 
     humidityStatus = (value) => {
         switch (true) {
