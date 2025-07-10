@@ -19,7 +19,7 @@ class WeatherApp {
     }
 
     getWeather = async (city = this._city) => {
-        const res = await this.getResource(`http://api.weatherapi.com/v1/forecast.json?key=${this._apiKey}&q=${city}&days=${this._days}&aqi=no&alerts=no`);
+        const res = await this.getResource(`https://api.weatherapi.com/v1/forecast.json?key=${this._apiKey}&q=${city}&days=${this._days}&aqi=no&alerts=no`);
         return this._weatherItems(res);
     }
 
