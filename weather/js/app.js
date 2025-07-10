@@ -3,7 +3,7 @@ import { WeatherApp } from "../service/weatherServices.js";
 document.addEventListener('DOMContentLoaded', () => {
     const app = new WeatherApp();
 
-    const { saveSettings, loadSettings, removeSettings, saveTheme, loadTheme } = app;
+    const { saveSettings, loadSettings, removeSettings, saveTheme, loadTheme, popularCities } = app;
 
 
     const menuBtn = document.querySelector('.header__icon-cover.menu');
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const weatherItems = cleaned.forecast.map((item, i) => {
                 // console.log(item);
                 if (i === 0) {
-                    arrow = scaleTemp < item.maxTemp ? 'up' : 'down';
+                    arrow = tempC <= item.maxTemp ? 'up' : 'down';
                     item.weekday = today;
                 } else {
                     arrow = cleaned.forecast[i - 1].maxTemp < item.maxTemp ? 'up' : 'down';
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const settings = loadSettings();
     renderWeather(settings?.city, settings?.tempScale);
 
-    if (settings) {
+    if (settings && settings['city']) {
         const historySpan = document.createElement('span');
         historySpan.textContent = settings['city'];
         modalHistory.appendChild(historySpan);
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const span = e.target.closest('span');
         if ((modalHistory.contains(span) || modalPopular.contains(span)) && span) { // all elements
             city = span.textContent;
-            console.log('city');
+            //console.log('city');
             saveBtn.classList.add('show');
         }
 
@@ -315,28 +315,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // app.getLocation('Batumi')
+
+    //modalPopular
     let debounceTimer;
     modalInput.addEventListener('input', (e) => {
-        // const value = e.target.value.trim();
-        // if (value.length <= 2) return;
+        const value = e.target.value.trim();
 
-        // clearTimeout(debounceTimer);
+        if (value.length === 0) {
+            popularCities(modalPopular);
+            return;
+        }
 
-        // debounceTimer = setTimeout(async () => {
-        //     try {
-        //         const country = await app.getLocation(value);
-        //         if (!country) {
-        //             console.log("data not found");
-        //             return;
-        //         }
+        if (value.length <= 2) return;
 
-        //         console.log(country);
+        clearTimeout(debounceTimer);
 
-        //     } catch (err) {
-        //         console.error("error get data", err);
-        //     }
+        debounceTimer = setTimeout(async () => {
+            try {
+                const country = await app.getLocation(value);
+                if (!country) {
+                    console.log("data not found");
+                    return;
+                }
 
-        // }, 500);
+                if (country.length === 0) {
+                    modalPopular.innerHTML = '<div class="modal__popular-notfound">Data not found</div>';
+                    return;
+                }
+
+                const uniqueSpans = [...new Set(country)];
+                const spans = uniqueSpans.map((item) => {
+                    return `<span>${item}</span>`;
+                }).join('');
+
+                //console.log(country);
+                modalPopular.innerHTML = spans;
+
+
+            } catch (err) {
+                console.error("error get data", err);
+            }
+
+        }, 500);
     });
 
 

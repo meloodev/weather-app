@@ -23,11 +23,14 @@ class WeatherApp {
         return this._weatherItems(res);
     }
 
-    // getLocation = async (city = this._city) => {
-    //     const loc = await this.getResource(`http://api.weatherapi.com/v1/forecast.json?key=${this._apiKey}&q=${city}&days=${this._days}&aqi=no&alerts=no`);
-    //     return this._loc(loc);
-    // }
+    getLocation = async (city = this._city) => {
+        const loc = await this.getResource(`https://api.weatherapi.com/v1/search.json?key=${this._apiKey}&q=${city}`);
+        return this._loc(loc);
+    }
 
+    _loc = (items) => {
+        return items.map(item => item.name);
+    }
 
 
     _weatherItems = (item) => {
@@ -76,13 +79,7 @@ class WeatherApp {
     }
 
 
-    // _loc = (item) => {
-    //     return {
-    //         name: item.location.name,
-    //         region: item.location.region,
-    //         country: item.location.country
-    //     }
-    // }
+
 
     humidityStatus = (value) => {
         switch (true) {
@@ -161,6 +158,23 @@ class WeatherApp {
         delete settings.city;
         delete settings.tempScale;
         localStorage.setItem('weatherAppSettings', JSON.stringify(settings));
+    }
+
+    popularCities = (render) => {
+        const cities = [
+            "Batumi", "Ajara", "Tbilisi", "Kutaisi", "Rustavi", "Zugdidi", "Telavi", "Poti", "Gori", "Senaki",
+            "Bakuriani", "Borjomi", "Kvareli", "Martvili", "Tskaltubo", "Dmanisi", "Mestia", "Tetri Tsqaro",
+            "Ambrolauri", "Gudauri", "Dusheti", "Tokyo", "New York", "London", "Paris", "Istanbul", "Dubai",
+            "Hong Kong", "Bangkok", "Singapore", "Rome", "Erevan", "Barcelona", "Seoul", "Los Angeles",
+            "Moscow", "Beijing", "Berlin", "Mumbai", "San Francisco", "Shanghai", "Sydney", "Georgia",
+            "Amsterdam", "Mexico City", "Buenos Aires", "Cape Town", "Vancouver", "Toronto", "Madrid",
+            "Lisbon", "Prague"
+        ];
+
+        const items = cities.map((item) => {
+            return `<span>${item}</span>`;
+        }).join('');
+        render.innerHTML = items;
     }
 }
 
