@@ -171,6 +171,10 @@ body.dark .modal__history-header button:active {
     // padding: 7px;
 }
 
+body.dark .modal__popular-notfound {
+    color: #acacacd9;
+}
+
 body.dark .header__icon-cover.menu .settings,
 body.dark .header__icon-cover.menu .settings>li:nth-child(2) ul {
     background-color: #515151;

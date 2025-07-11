@@ -202,6 +202,10 @@ body.dark .modal__history-header button:active {
   background-color: #262635;
 }
 
+body.dark .modal__popular-notfound {
+  color: rgba(172, 172, 172, 0.8509803922);
+}
+
 body.dark .header__icon-cover.menu .settings,
 body.dark .header__icon-cover.menu .settings > li:nth-child(2) ul {
   background-color: #515151;

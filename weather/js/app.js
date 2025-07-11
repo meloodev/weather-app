@@ -109,6 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.remove('lock');
         modal.classList.remove('reveal');
         saveBtn.classList.remove('show');
+        modalInput.value = '';
+        popularCities(modalPopular);
     });
 
     weatherTheme.addEventListener('click', () => {
@@ -314,6 +316,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             body.classList.remove('lock');
             modal.classList.remove('reveal');
+            modalInput.value = '';
+            popularCities(modalPopular);
+
         }
     });
 
