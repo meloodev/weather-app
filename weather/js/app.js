@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalPopular = document.querySelector('.modal__popular-inner');
     const modalHistory = document.querySelector('.modal__history .modal__history-cities');
     // const modalHistoryCover = document.querySelector('.modal__history');
-    const trash = document.querySelector('.fa-solid.fa-trash');
+    const trash = document.querySelector('.modal__trash-btn');
     const saveBtn = document.querySelector('.modal__save-box .modal__save');
 
     const celsius = document.querySelector('.modal__temperature .celsius');
@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     menuBtn.addEventListener('click', (e) => {
         if (e.target === menuBtn || e.target === menuBtnIcon) {
             menu.classList.add('show');
+            // console.log(modalHistory.children.length);
         }
     });
 
@@ -105,13 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
         menu.classList.remove('show');
     });
 
-    modalCancel.addEventListener('click', () => {
-        body.classList.remove('lock');
-        modal.classList.remove('reveal');
-        saveBtn.classList.remove('show');
-        modalInput.value = '';
-        popularCities(modalPopular);
-    });
 
     weatherTheme.addEventListener('click', () => {
         submenu.classList.toggle('show');
@@ -320,6 +314,15 @@ document.addEventListener('DOMContentLoaded', () => {
             popularCities(modalPopular);
 
         }
+
+        if (modalCancel.contains(target)) { // cancel btn
+            body.classList.remove('lock');
+            modal.classList.remove('reveal');
+            saveBtn.classList.remove('show');
+            modalInput.value = '';
+            popularCities(modalPopular);
+            // modalHistory.innerHTML = '';
+        };
     });
 
     // app.getLocation('Batumi')
