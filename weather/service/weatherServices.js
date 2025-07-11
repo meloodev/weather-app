@@ -2,8 +2,9 @@ class WeatherApp {
     _apiKey = "3f9cf34620e14463966140028250507";
     _city = "Batumi";
     _days = 7;
+    _base = 'https://api.weatherapi.com/v1/';
 
-    getResource = async (url) => {
+    _getResource = async (url) => {
         try {
             const response = await fetch(url);
             if (!response.ok) {
@@ -19,12 +20,12 @@ class WeatherApp {
     }
 
     getWeather = async (city = this._city) => {
-        const res = await this.getResource(`https://api.weatherapi.com/v1/forecast.json?key=${this._apiKey}&q=${city}&days=${this._days}&aqi=no&alerts=no`);
+        const res = await this._getResource(`${this._base}forecast.json?key=${this._apiKey}&q=${city}&days=${this._days}&aqi=no&alerts=no`);
         return this._weatherItems(res);
     }
 
     getLocation = async (city = this._city) => {
-        const loc = await this.getResource(`https://api.weatherapi.com/v1/search.json?key=${this._apiKey}&q=${city}`);
+        const loc = await this._getResource(`${this._base}search.json?key=${this._apiKey}&q=${city}`);
         return this._loc(loc);
     }
 

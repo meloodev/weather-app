@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalInner = document.querySelector('.modal__inner');
     const modalPopular = document.querySelector('.modal__popular-inner');
     const modalHistory = document.querySelector('.modal__history .modal__history-cities');
-    // const modalHistoryCover = document.querySelector('.modal__history');
+ 
     const trash = document.querySelector('.modal__trash-btn');
     const saveBtn = document.querySelector('.modal__save-box .modal__save');
 
@@ -86,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
     menuBtn.addEventListener('click', (e) => {
         if (e.target === menuBtn || e.target === menuBtnIcon) {
             menu.classList.add('show');
-            // console.log(modalHistory.children.length);
         }
     });
 
