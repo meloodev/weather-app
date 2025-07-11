@@ -248,15 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fahrenheitInp.checked = settings.tempScale === 'F';
     }
 
-
-
-
-    //<input type="radio" name="radio" id="cels" checked=""></input>
-
-
     // modalHistory
-
-
 
     modalInner.addEventListener('click', (e) => {
         const target = e.target;
