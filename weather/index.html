@@ -18,27 +18,29 @@
         <div class="container">
             <div class="weather__header">
                 <div class="weather__header-top">
-                    <h2>Weather App</h2>
+                    <h1>Weather App</h1>
                 </div>
 
                 <div class="weather__header__icons">
                     <div class="header__icon-cover menu">
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                        <i role="button" aria-label="Open settings menu" class="fa-solid fa-ellipsis-vertical"></i>
+
 
                         <ul class="settings">
                             <li class="weather__settings">
-                                <span>settings</span>
+                                <button>settings</button>
                             </li>
                             <li class="weather__theme">
                                 <i class="fa-solid fa-chevron-left"></i>
-                                <span>themes</span>
+                                <button aria-haspopup="true">themes</button>
                                 <ul class="submenu">
                                     <li class="dark">
-                                        <span>dark</span>
+                                        <button>dark</button>
                                         <i class="fa-solid"></i>
                                     </li>
                                     <li class="light">
-                                        <span>light</span>
+                                        <button>light</button>
                                         <i class="fa-solid fa-check"></i>
                                     </li>
                                 </ul>
@@ -73,7 +75,7 @@
                                             <span>updated</span>
                                         </div>
                                     </div>
-                                    <h1>22</h1>
+                                    <h2>22</h2>
                                 </div>
                                 <span>°</span>
                             </div>
@@ -167,7 +169,7 @@
         </div>
     </main>
 
-    <div class="modal">
+    <div class="modal" role="dialog" aria-modal="true">
         <div class="container">
             <div class="modal__inner">
                 <div class="modal__header">
@@ -178,8 +180,8 @@
                         <input id="loc" type="search" placeholder="Please enter your location">
                     </div>
                     <div class="modal__save-box">
-                        <span class="modal__save">Save</span>
-                        <span class="modal__cancel">Cancel</span>
+                        <button class="modal__save">Save</button>
+                        <button class="modal__cancel">Cancel</button>
                     </div>
                 </div>
                 <div class="modal__temperature">
@@ -196,7 +198,11 @@
                 <div class="modal__history">
                     <div class="modal__history-header">
                         <span>Search history</span>
-                        <i class="fa-solid fa-trash"></i>
+
+                        <button aria-label="Clear search history">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+
                     </div>
                     <div class="modal__history-cities">
                         <!-- <span>New York</span>
@@ -214,7 +220,6 @@
                         <span>Kutaisi</span>
                         <span>Rustavi</span>
                         <span>Zugdidi</span>
-                        <span>Telavi</span>
                         <span>Poti</span>
                         <span>Gori</span>
                         <span>Senaki</span>

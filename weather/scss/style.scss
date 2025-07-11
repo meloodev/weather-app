@@ -69,8 +69,15 @@ header {
     border-radius: 3px;
 }
 
-.header__icon-cover.menu .settings>li>span {
+.header__icon-cover.menu .settings>li>button {
+    font-family: variables.$montserrat;
+    background-color: transparent;
+    text-transform: uppercase;
     margin-left: auto;
+    font-size: 10px;
+    font-weight: 500;
+    cursor: pointer;
+
 }
 
 .header__icon-cover.menu .settings li:not(:last-child) {
@@ -120,11 +127,18 @@ header {
 .header__icon-cover.menu .settings>li:nth-child(2) ul li {
     display: flex;
     align-items: center;
+    //cursor: pointer;
 }
 
 
-.header__icon-cover.menu .settings>li:nth-child(2) ul>li span {
+.header__icon-cover.menu .settings>li:nth-child(2) ul>li button {
     margin-right: auto;
+    background-color: transparent;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-family: variables.$montserrat;
+    cursor: pointer;
 }
 
 .header__icon-cover.menu .settings li:nth-child(2):active>.submenu {
@@ -147,7 +161,7 @@ header {
 }
 
 
-.weather__header-top>h2 {
+.weather__header-top>h1 {
     font-weight: 700;
     font-size: 23px;
     color: #1E293B;
@@ -297,7 +311,7 @@ header {
     min-height: 96px;
 }
 
-h1 {
+.weather__forecast-temp h2 {
     font-size: 66.5px;
     line-height: 72px;
     color: #F97316;
@@ -647,16 +661,22 @@ main {
     font-size: 16px;
 }
 
-.modal__save-box span {
+.modal__save-box button {
+    font-family: variables.$montserrat;
     font-weight: 500;
     color: #00adee;
     padding: 3px 5px;
     border-radius: 3px;
     cursor: pointer;
     transition: background-color .2s ease-in-out;
+    background-color: #e2e2e231;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     user-select: none;
 }
+
+// .modal__cancel {
+//     background-color: #ececec31;
+// }
 
 .modal__save-box {
     @include mixins.flex(flex, null, center, null, 20px);
@@ -672,7 +692,7 @@ main {
     scale: .95;
 }
 
-.modal__save-box span:active {
+.modal__save-box button:active {
     background-color: #d2d2d231;
 }
 
@@ -697,18 +717,22 @@ main {
     user-select: none;
 }
 
-.modal__history-header i {
-    padding: 4px;
+.modal__history-header button {
+    padding: 6px 7px 4px 7px;
     border-radius: 3px;
     cursor: pointer;
+    border: none;
+    background-color: transparent;
     transition: background-color .2s ease-in-out;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     user-select: none;
+    color: #0000007a;
 }
 
-.modal__history-header i:active {
-    background-color: #d2d2d231;
-}
+// .modal__history-header button:active {
+//     padding: 5px;
+//     background-color: #d2d2d231;
+// }
 
 
 .modal__history-cities {
@@ -904,11 +928,11 @@ main {
         border: 1px solid rgba(59, 130, 246, 0.2);
     }
 
-    .modal__save-box span:hover {
+    .modal__save-box button:hover {
         background-color: #d2d2d231;
     }
 
-    .modal__history-header i:hover {
+    .modal__history-header button:hover {
         background-color: #d2d2d231;
     }
 

@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ///////////
     const weatherCity = document.querySelector('.weather__city h2');
-    const cityTemp = document.querySelector('h1');
+    const cityTemp = document.querySelector('.weather__forecast-temp h2');
     const feels = document.querySelector('.weather__feels-temp');
     const weatherSky = document.querySelector('.weather__sky');
     const weatherIcon = document.querySelector('.weather__status img');
@@ -311,6 +311,9 @@ document.addEventListener('DOMContentLoaded', () => {
             saveSettings(city, tempScale);
             renderWeather(city, tempScale);
             saveBtn.classList.remove('show');
+
+            body.classList.remove('lock');
+            modal.classList.remove('reveal');
         }
     });
 

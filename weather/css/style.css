@@ -50,7 +50,7 @@ body.dark .weather__header {
   background-color: #161622;
 }
 
-body.dark .weather__header h2 {
+body.dark .weather__header h1 {
   color: #fff;
 }
 
@@ -169,10 +169,6 @@ body.dark .modal__history-header span {
   color: #fff;
 }
 
-body.dark .modal__history-header i {
-  color: tomato;
-}
-
 body.dark .modal__popular-title {
   color: #fff;
 }
@@ -196,14 +192,14 @@ body.dark .modal__input input::placeholder {
   color: #dcdcdc;
 }
 
-body.dark .modal__history-header i {
+body.dark .modal__history-header button {
+  color: tomato;
   background-color: #38384e;
-  padding: 7px;
+  padding: 6px 7px 4px 7px;
 }
 
-body.dark .modal__history-header i:active {
+body.dark .modal__history-header button:active {
   background-color: #262635;
-  padding: 7px;
 }
 
 body.dark .header__icon-cover.menu .settings,
@@ -215,16 +211,26 @@ body.dark .header__icon-cover.menu .settings li:active {
   color: #161622;
 }
 
+body.dark .modal__save-box button {
+  background-color: rgba(236, 236, 236, 0.1921568627);
+}
+
+body.dark .modal__save-box button:active {
+  background-color: rgba(210, 210, 210, 0.1921568627);
+}
+
 @media (any-hover: hover) {
+  body.dark .modal__save-box button:hover {
+    background-color: rgba(210, 210, 210, 0.1921568627);
+  }
   body.dark .modal__popular-inner span:hover,
   body.dark .modal__history-cities span:hover {
     background-color: #36180e;
     color: #fff;
     border: 1px solid #a93d1f;
   }
-  body.dark .modal__history-header i:hover {
+  body.dark .modal__history-header button:hover {
     background-color: #262635;
-    padding: 7px;
   }
   body.dark .header__icon-cover.menu .settings > li:nth-child(2) ul:hover {
     color: #161622;
@@ -311,8 +317,14 @@ header {
   border-radius: 3px;
 }
 
-.header__icon-cover.menu .settings > li > span {
+.header__icon-cover.menu .settings > li > button {
+  font-family: "Montserrat", sans-serif;
+  background-color: transparent;
+  text-transform: uppercase;
   margin-left: auto;
+  font-size: 10px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
 .header__icon-cover.menu .settings li:not(:last-child) {
@@ -364,8 +376,14 @@ header {
   align-items: center;
 }
 
-.header__icon-cover.menu .settings > li:nth-child(2) ul > li span {
+.header__icon-cover.menu .settings > li:nth-child(2) ul > li button {
   margin-right: auto;
+  background-color: transparent;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
 }
 
 .header__icon-cover.menu .settings li:nth-child(2):active > .submenu {
@@ -380,7 +398,7 @@ header {
   background-color: rgba(210, 210, 210, 0.1921568627);
 }
 
-.weather__header-top > h2 {
+.weather__header-top > h1 {
   font-weight: 700;
   font-size: 23px;
   color: #1E293B;
@@ -528,7 +546,7 @@ header {
   min-height: 96px;
 }
 
-h1 {
+.weather__forecast-temp h2 {
   font-size: 66.5px;
   line-height: 72px;
   color: #F97316;
@@ -906,13 +924,15 @@ main {
   font-size: 16px;
 }
 
-.modal__save-box span {
+.modal__save-box button {
+  font-family: "Montserrat", sans-serif;
   font-weight: 500;
   color: #00adee;
   padding: 3px 5px;
   border-radius: 3px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+  background-color: rgba(226, 226, 226, 0.1921568627);
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   user-select: none;
 }
@@ -933,7 +953,7 @@ main {
   scale: 0.95;
 }
 
-.modal__save-box span:active {
+.modal__save-box button:active {
   background-color: rgba(210, 210, 210, 0.1921568627);
 }
 
@@ -960,17 +980,16 @@ main {
   user-select: none;
 }
 
-.modal__history-header i {
-  padding: 4px;
+.modal__history-header button {
+  padding: 6px 7px 4px 7px;
   border-radius: 3px;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
   transition: background-color 0.2s ease-in-out;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   user-select: none;
-}
-
-.modal__history-header i:active {
-  background-color: rgba(210, 210, 210, 0.1921568627);
+  color: rgba(0, 0, 0, 0.4784313725);
 }
 
 .modal__history-cities {
@@ -1136,10 +1155,10 @@ main {
     background: rgba(59, 130, 246, 0.1);
     border: 1px solid rgba(59, 130, 246, 0.2);
   }
-  .modal__save-box span:hover {
+  .modal__save-box button:hover {
     background-color: rgba(210, 210, 210, 0.1921568627);
   }
-  .modal__history-header i:hover {
+  .modal__history-header button:hover {
     background-color: rgba(210, 210, 210, 0.1921568627);
   }
   .modal__popular-inner span:hover,

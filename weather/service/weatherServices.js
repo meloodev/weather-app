@@ -162,7 +162,7 @@ class WeatherApp {
 
     popularCities = (render) => {
         const cities = [
-            "Batumi", "Ajara", "Tbilisi", "Kutaisi", "Rustavi", "Zugdidi", "Telavi", "Poti", "Gori", "Senaki",
+            "Batumi", "Ajara", "Tbilisi", "Kutaisi", "Rustavi", "Zugdidi", "Poti", "Gori", "Senaki",
             "Bakuriani", "Borjomi", "Kvareli", "Martvili", "Tskaltubo", "Dmanisi", "Mestia", "Tetri Tsqaro",
             "Ambrolauri", "Gudauri", "Dusheti", "Tokyo", "New York", "London", "Paris", "Istanbul", "Dubai",
             "Hong Kong", "Bangkok", "Singapore", "Rome", "Erevan", "Barcelona", "Seoul", "Los Angeles",
@@ -172,7 +172,7 @@ class WeatherApp {
         ];
 
         const items = cities.map((item) => {
-            return `<span>${item}</span>`;
+            return `<span role="button">${item}</span>`;
         }).join('');
         render.innerHTML = items;
     }
