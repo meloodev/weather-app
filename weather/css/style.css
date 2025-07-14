@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   box-sizing: border-box;
 }
@@ -94,6 +95,10 @@ body.dark .weather__details-title {
 
 body.dark .details__item-cover span {
   color: #fff;
+}
+
+body.dark .details__item-cover svg #wind {
+  fill: tomato;
 }
 
 body.dark .details__item-humidity span:nth-child(1),
@@ -807,9 +812,22 @@ header {
   gap: 12px;
 }
 
-.details__item-cover img {
-  width: 36px;
-  height: 36px;
+@keyframes rotate360 {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+  100% {
+    transform: rotate(360deg);
+    transform-origin: center;
+  }
+}
+.details__item-cover svg #wind {
+  animation: rotate360 0s linear infinite;
+  transform-box: fill-box;
+  /* важно! */
+  transform-origin: 1.235rem 0.994rem !important;
+  /* крутится вокруг своей оси */
 }
 
 .details__item-cover span {

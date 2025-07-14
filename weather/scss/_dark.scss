@@ -57,6 +57,10 @@ body.dark .details__item-cover span {
     color: #fff;
 }
 
+body.dark .details__item-cover svg #wind {
+    fill: tomato;
+}
+
 
 
 body.dark .details__item-humidity span:nth-child(1),

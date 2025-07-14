@@ -72,6 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const windDetails = document.querySelector('.weather__details-item .details__decore.wind');
     const pressureDetails = document.querySelector('.weather__details-item .details__decore.pressure');
 
+
+    // const windDetails = document.querySelector('details__item-cover svg #wind');
+    
+
     
 
 

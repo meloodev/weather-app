@@ -563,9 +563,32 @@ header {
     @include mixins.flex(flex, null, center, null, 12px);
 }
 
-.details__item-cover img {
-    width: 36px;
-    height: 36px;
+// .details__item-cover svg {
+//     width: 36px;
+//     height: auto;
+// }
+
+@keyframes rotate360 {
+    0% {
+        transform: rotate(0deg);
+        transform-origin: center;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        transform-origin: center;
+    }
+}
+
+.details__item-cover svg #wind {
+    animation: rotate360 0s linear infinite;
+    transform-box: fill-box;
+    /* важно! */
+    transform-origin: 1.235rem 0.994rem !important;
+    // transform-origin: center center;
+    /* крутится вокруг своей оси */
+    // width: 36px;
+    // height: 36px;
 }
 
 .details__item-cover span {
