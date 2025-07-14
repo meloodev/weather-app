@@ -329,6 +329,7 @@ header {
   font-size: 10px;
   font-weight: 500;
   cursor: pointer;
+  color: #1E293B;
 }
 
 .header__icon-cover.menu .settings li:not(:last-child) {
@@ -339,6 +340,7 @@ header {
 .header__icon-cover.menu .settings li i {
   padding-top: 1px;
   font-size: 8px;
+  color: #1E293B;
 }
 
 .header__icon-cover.menu .settings li:hover {
@@ -388,6 +390,7 @@ header {
   font-size: 10px;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
+  color: #1E293B;
 }
 
 .header__icon-cover.menu .settings li:nth-child(2):active > .submenu {
