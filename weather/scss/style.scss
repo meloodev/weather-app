@@ -407,6 +407,7 @@ header {
     border-radius: 16px;
     border: 1px solid transparent;
     transition: background-color .1s ease-in-out;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .weather__daily-item:active {
@@ -901,6 +902,10 @@ main {
     .container__right {
         gap: 10px;
     }
+
+    .weather__sky {
+        width: min-content;
+    }
 }
 
 @media (max-width: 350px) {
@@ -911,6 +916,8 @@ main {
     .weather__overview {
         font-size: 10px;
     }
+
+    
 }
 
 
