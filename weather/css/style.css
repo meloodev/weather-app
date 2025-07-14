@@ -766,6 +766,9 @@ header {
 }
 
 .weather__details-item .details__decore {
+  --humidity-width: 0%;
+  --wind-width: 0%;
+  --pressure-width: 0%;
   position: absolute;
   left: 0px;
   width: 100%;
@@ -773,6 +776,29 @@ header {
   height: 8px;
   border-radius: 99px;
   background-color: #E5E7EB;
+}
+
+.weather__details-item .details__decore::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: tomato;
+  border-radius: 99px;
+}
+
+.weather__details-item .details__decore.humidity::after {
+  width: var(--humidity-width, 0%);
+}
+
+.weather__details-item .details__decore.wind::after {
+  width: var(--wind-width, 0%);
+}
+
+.weather__details-item .details__decore.pressure::after {
+  width: var(--pressure-width, 0%);
 }
 
 .details__item-cover {

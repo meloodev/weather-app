@@ -67,6 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const modalInput = document.querySelector('.modal__input input');
 
+
+    const humidityDetails = document.querySelector('.weather__details-item .details__decore.humidity');
+    const windDetails = document.querySelector('.weather__details-item .details__decore.wind');
+    const pressureDetails = document.querySelector('.weather__details-item .details__decore.pressure');
+
+    
+
+
+
+
+
+
+
+
     let city = '';
     let tempScale = 'C';
 
@@ -168,8 +182,13 @@ document.addEventListener('DOMContentLoaded', () => {
             humidity.textContent = `${humidityTmp} %`;
             wind.textContent = `${windTmp} km/h`;
             pressure.textContent = `${pressureTmp} hPa`;
+            humidityDetails.style.setProperty('--humidity-width', `${humidityTmp}%`);
+            windDetails.style.setProperty('--wind-width', `${((windTmp / 100) *100)}%`);
+            pressureDetails.style.setProperty('--pressure-width', `${((pressureTmp - 980) / (1050 - 980)) * 100}%`);
+            //console.log(cleaned.rain.chance);
+
             humidityStatusVal.textContent = humidityStatus(humidityTmp);
-            windStatusVal.textContent = windStatus(windTmp);
+            windStatusVal.textContent = windStatus(windTmp);    
             pressureStatusVal.textContent = pressureStatus(pressureTmp);
 
             weatherDays.textContent = cleaned.forecast.length;
