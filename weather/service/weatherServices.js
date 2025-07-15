@@ -123,6 +123,34 @@ class WeatherApp {
         }
     }
 
+
+    turbineSpeedCalc = (kph) => {
+        if (kph <= 0.2) return 80;
+        if (kph <= 1) return 30;
+        if (kph <= 2) return 10;
+        if (kph <= 3) return 8;
+        if (kph <= 4) return 6;
+        if (kph <= 5) return 5;
+        if (kph <= 6) return 4;
+        if (kph <= 7) return 3;
+        if (kph <= 8) return 2;
+        if (kph <= 9) return 1.8;
+        if (kph <= 10) return 1.5;
+        if (kph <= 13) return 1.3;
+        if (kph <= 15) return 1.1;
+        if (kph <= 20) return 1;
+        if (kph <= 25) return 0.9;
+        if (kph <= 30) return 0.8;
+        if (kph <= 40) return 0.75;
+        if (kph <= 50) return 0.7;
+        if (kph <= 60) return 0.65;
+        if (kph <= 70) return 0.6;
+        if (kph <= 80) return 0.55;
+        if (kph <= 90) return 0.5;
+        if (kph <= 100) return 0.45;
+        return 0.4;
+    }
+
     saveSettings(city, tempScale) {
         const currentSettings = JSON.parse(localStorage.getItem('weatherAppSettings')) || {};
         currentSettings.city = city;
