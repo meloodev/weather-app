@@ -583,7 +583,9 @@ header {
 .details__item-cover svg #wind {
     animation: rotate360 0s linear infinite;
     transform-box: fill-box;
-    transform-origin: 1.235rem 0.994rem !important;
+    transform-origin: 1.235rem 0.992rem !important;
+    // transform-origin: 1.235rem 0.994rem !important;
+    transition: animation 0.8s ease-in-out;
     // transform-origin: center center;
     // width: 36px;
     // height: 36px;
