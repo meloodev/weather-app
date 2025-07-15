@@ -165,6 +165,15 @@ class WeatherApp {
         return angle;
     }
 
+    humiditySpeedCalc = (val) => {
+        const minHumidity = 1;
+        const maxHumidity = 100;
+        const minAngle = -89;
+        const maxAngle = 89;
+        const ratio = (val - minHumidity) / (maxHumidity - minHumidity);
+        return minAngle + ratio * (maxAngle - minAngle);
+    }
+
     saveSettings(city, tempScale) {
         const currentSettings = JSON.parse(localStorage.getItem('weatherAppSettings')) || {};
         currentSettings.city = city;

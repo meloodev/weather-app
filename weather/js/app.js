@@ -73,8 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const pressureDetails = document.querySelector('.weather__details-item.pressure .details__decore');
 
 
-    const turbineSpeed = document.querySelector('.weather__details-item.wind svg #wind');
-    const pressureSpeed = document.querySelector('.weather__details-item.pressure svg #presure-speed');
+    const turbineSpeed = document.querySelector('.weather__details-item.wind svg #wind__speed');
+    const pressureSpeed = document.querySelector('.weather__details-item.pressure svg #presure__speed');
+    const humiditySpeed = document.querySelector('.weather__details-item.humidity svg #humidity__speed');
 
 
 
@@ -167,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // console.log(cleaned);
-            const { humidityStatus, windStatus, pressureStatus, turbineSpeedCalc, pressureSpeedCalc } = app;
+            const { humidityStatus, windStatus, pressureStatus, turbineSpeedCalc, pressureSpeedCalc, humiditySpeedCalc } = app;
             const { tempC, tempF, feelsLikeC, feelsLikeF, condition, icon, humidityTmp, windTmp, pressureTmp } = cleaned.current;
 
             const scaleTemp = scale === 'C' ? tempC : tempF;
@@ -195,9 +196,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             turbineSpeed.style.animationDuration = `${turbineSpeedCalc(windTmp)}s`;
             // turbineSpeed.style.animation = `rotate360 ${4}s linear infinite !important`;
-
             pressureSpeed.style.transform = `rotate(${pressureSpeedCalc(pressureTmp)}deg)`;
             //needle.style.transform = `rotate(${angle}deg)`;
+            humiditySpeed.style.transform = `rotate(${humiditySpeedCalc(humidityTmp)}deg)`;
+
+
 
             humidityStatusVal.textContent = humidityStatus(humidityTmp);
             windStatusVal.textContent = windStatus(windTmp);
