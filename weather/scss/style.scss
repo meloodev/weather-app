@@ -507,6 +507,16 @@ header {
     margin-bottom: 29px;
 }
 
+.weather__details-item.wind .details__item-cover {
+    gap: 0px;
+}
+
+.weather__details-item.humidity .details__item-cover {
+    gap: 8px;
+}
+
+
+
 .weather__details-item:last-child {
     margin-bottom: 0px;
 }
@@ -590,6 +600,14 @@ header {
     // width: 36px;
     // height: 36px;
 }
+
+.details__item-cover svg #presure-speed {
+    transform-box: fill-box;
+    transform: rotate(-90deg);
+    transform-origin: 7.8px 28.0px !important;
+    transition: animation 0.3s ease-in-out;
+}
+
 
 .details__item-cover span {
     font-weight: 400;

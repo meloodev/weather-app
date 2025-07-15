@@ -151,6 +151,20 @@ class WeatherApp {
         return 0.4;
     }
 
+
+    pressureSpeedCalc = (hPa) => {
+        if (hPa < 980) return -90;
+        if (hPa > 1050) return 90;
+        const minPressure = 980;
+        const maxPressure = 1050;
+        const minAngle = -68;
+        const maxAngle = 68;
+
+        const ratio = (hPa - minPressure) / (maxPressure - minPressure);
+        const angle = minAngle + ratio * (maxAngle - minAngle);
+        return angle;
+    }
+
     saveSettings(city, tempScale) {
         const currentSettings = JSON.parse(localStorage.getItem('weatherAppSettings')) || {};
         currentSettings.city = city;

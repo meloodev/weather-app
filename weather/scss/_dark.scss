@@ -58,7 +58,13 @@ body.dark .details__item-cover span {
 }
 
 body.dark .details__item-cover svg #wind #turbine {
-    fill: tomato;
+    fill: #ff6347;
+}
+
+body.dark .weather__details-item.pressure svg #pressure__decore-one,
+body.dark .weather__details-item.pressure svg #pressure__decore-two,
+body.dark .weather__details-item.pressure svg #pressure__decore-three {
+    fill: #A0D468;
 }
 
 

@@ -97,7 +97,13 @@ body.dark .details__item-cover span {
 }
 
 body.dark .details__item-cover svg #wind #turbine {
-  fill: tomato;
+  fill: #ff6347;
+}
+
+body.dark .weather__details-item.pressure svg #pressure__decore-one,
+body.dark .weather__details-item.pressure svg #pressure__decore-two,
+body.dark .weather__details-item.pressure svg #pressure__decore-three {
+  fill: #A0D468;
 }
 
 body.dark .details__item-humidity span:nth-child(1),
@@ -765,6 +771,14 @@ header {
   margin-bottom: 29px;
 }
 
+.weather__details-item.wind .details__item-cover {
+  gap: 0px;
+}
+
+.weather__details-item.humidity .details__item-cover {
+  gap: 8px;
+}
+
 .weather__details-item:last-child {
   margin-bottom: 0px;
 }
@@ -825,6 +839,13 @@ header {
   animation: rotate360 0s linear infinite;
   transform-box: fill-box;
   transform-origin: 1.237rem 0.992rem !important;
+  transition: animation 0.3s ease-in-out;
+}
+
+.details__item-cover svg #presure-speed {
+  transform-box: fill-box;
+  transform: rotate(-90deg);
+  transform-origin: 7.8px 28px !important;
   transition: animation 0.3s ease-in-out;
 }
 
