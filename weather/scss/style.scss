@@ -508,11 +508,16 @@ header {
 }
 
 .weather__details-item.wind .details__item-cover {
-    gap: 3px;
+    gap: 8px;
 }
 
 .weather__details-item.humidity .details__item-cover {
     gap: 13px;
+        padding-left: 5px;
+}
+
+.weather__details-item.pressure {
+    padding-left: 3px;
 }
 
 
@@ -569,7 +574,8 @@ header {
 
 
 .details__item-cover {
-    @include mixins.flex(flex, null, center, null, 12px);
+    @include mixins.flex(flex, null, center, null, 15px);
+    
 }
 
 // .details__item-cover svg {

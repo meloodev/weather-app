@@ -100,10 +100,55 @@ body.dark .details__item-cover svg #wind__speed #turbine {
   fill: #ff6347;
 }
 
-body.dark .weather__details-item.pressure svg #pressure__decore-one,
-body.dark .weather__details-item.pressure svg #pressure__decore-two,
 body.dark .weather__details-item.pressure svg #pressure__decore-three {
-  fill: #A0D468;
+  fill: tomato;
+}
+
+body.dark .weather__details-item.pressure svg #pressure__decore-one,
+body.dark .weather__details-item.pressure svg #pressure__decore-two {
+  fill: rgba(255, 255, 255, 0.5647058824);
+}
+
+body.dark .weather__details-item.wind svg #wind__turbine-footer {
+  fill: #ccd1d9;
+}
+
+body.dark .weather__details-item.pressure svg #pressure__arrow-circle,
+body.dark .weather__details-item.pressure svg #pressure__arrow-arr {
+  fill: #fff;
+}
+
+body.dark .weather__details-item.pressure svg #pressure__arrow-decore {
+  fill: #fff;
+}
+
+body.dark .weather__details-item.humidity svg #humidity__speed,
+body.dark .weather__details-item.humidity svg #humidity__text {
+  fill: #fff;
+}
+
+body.dark .weather__details-item.humidity svg #humidity__speed-one {
+  fill: rgba(255, 99, 71, 0.2509803922);
+}
+
+body.dark .weather__details-item.humidity svg #humidity__speed-two {
+  fill: rgba(255, 99, 71, 0.3764705882);
+}
+
+body.dark .weather__details-item.humidity svg #humidity__speed-three {
+  fill: rgba(255, 99, 71, 0.5019607843);
+}
+
+body.dark .weather__details-item.humidity svg #humidity__speed-four {
+  fill: rgba(255, 99, 71, 0.5647058824);
+}
+
+body.dark .weather__details-item.humidity svg #humidity__speed-five {
+  fill: #ff6347;
+}
+
+body.dark .weather__details-item.pressure svg #pressure__decore-cover {
+  fill: #CCD1D9;
 }
 
 body.dark .details__item-humidity span:nth-child(1),
@@ -772,11 +817,16 @@ header {
 }
 
 .weather__details-item.wind .details__item-cover {
-  gap: 3px;
+  gap: 8px;
 }
 
 .weather__details-item.humidity .details__item-cover {
   gap: 13px;
+  padding-left: 5px;
+}
+
+.weather__details-item.pressure {
+  padding-left: 3px;
 }
 
 .weather__details-item:last-child {
@@ -822,7 +872,7 @@ header {
 .details__item-cover {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
 }
 
 @keyframes rotate360 {

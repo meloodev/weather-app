@@ -61,10 +61,58 @@ body.dark .details__item-cover svg #wind__speed #turbine {
     fill: #ff6347;
 }
 
-body.dark .weather__details-item.pressure svg #pressure__decore-one,
-body.dark .weather__details-item.pressure svg #pressure__decore-two,
+
 body.dark .weather__details-item.pressure svg #pressure__decore-three {
-    fill: #A0D468;
+    fill: tomato;
+}
+
+body.dark .weather__details-item.pressure svg #pressure__decore-one,
+body.dark .weather__details-item.pressure svg #pressure__decore-two{
+    fill: #ffffff90;
+}
+
+body.dark .weather__details-item.wind svg #wind__turbine-footer {
+    fill: #ccd1d9;
+}
+
+body.dark .weather__details-item.pressure svg #pressure__arrow-circle,
+body.dark .weather__details-item.pressure svg #pressure__arrow-arr {
+    fill: #fff;
+}
+
+body.dark .weather__details-item.pressure svg #pressure__arrow-decore {
+    fill: #fff;
+}
+
+body.dark .weather__details-item.humidity svg #humidity__speed,
+body.dark .weather__details-item.humidity svg #humidity__text {
+    fill: #fff;
+}
+
+body.dark .weather__details-item.humidity svg #humidity__speed-one {
+    fill: #ff634740;
+}
+
+body.dark .weather__details-item.humidity svg #humidity__speed-two {
+    fill: #ff634760;
+}
+
+body.dark .weather__details-item.humidity svg #humidity__speed-three {
+    fill: #ff634780;
+}
+
+body.dark .weather__details-item.humidity svg #humidity__speed-four {
+    fill: #ff634790;
+}
+
+body.dark .weather__details-item.humidity svg #humidity__speed-five {
+    fill: #ff6347;
+}
+
+
+
+body.dark .weather__details-item.pressure svg #pressure__decore-cover {
+    fill: #CCD1D9;
 }
 
 
