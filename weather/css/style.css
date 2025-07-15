@@ -825,7 +825,7 @@ header {
   animation: rotate360 0s linear infinite;
   transform-box: fill-box;
   transform-origin: 1.233rem 0.992rem !important;
-  transition: animation 0.8s ease-in-out;
+  transition: animation 0.3s ease-in-out;
 }
 
 .details__item-cover span {
