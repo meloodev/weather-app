@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalInner = document.querySelector('.modal__inner');
     const modalPopular = document.querySelector('.modal__popular-inner');
     const modalHistory = document.querySelector('.modal__history .modal__history-cities');
- 
+
     const trash = document.querySelector('.modal__trash-btn');
     const saveBtn = document.querySelector('.modal__save-box .modal__save');
 
@@ -68,15 +68,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalInput = document.querySelector('.modal__input input');
 
 
-    const humidityDetails = document.querySelector('.weather__details-item .details__decore.humidity');
-    const windDetails = document.querySelector('.weather__details-item .details__decore.wind');
-    const pressureDetails = document.querySelector('.weather__details-item .details__decore.pressure');
+    const humidityDetails = document.querySelector('.weather__details-item.humidity .details__decore');
+    const windDetails = document.querySelector('.weather__details-item.wind .details__decore');
+    const pressureDetails = document.querySelector('.weather__details-item.pressure .details__decore');
 
 
     // const windDetails = document.querySelector('details__item-cover svg #wind');
-    
 
-    
+
+
 
 
 
@@ -186,13 +186,14 @@ document.addEventListener('DOMContentLoaded', () => {
             humidity.textContent = `${humidityTmp} %`;
             wind.textContent = `${windTmp} km/h`;
             pressure.textContent = `${pressureTmp} hPa`;
+            
             humidityDetails.style.setProperty('--humidity-width', `${humidityTmp}%`);
-            windDetails.style.setProperty('--wind-width', `${((windTmp / 100) *100)}%`);
+            windDetails.style.setProperty('--wind-width', `${((windTmp / 100) * 100)}%`);
             pressureDetails.style.setProperty('--pressure-width', `${((pressureTmp - 980) / (1050 - 980)) * 100}%`);
             //console.log(cleaned.rain.chance);
 
             humidityStatusVal.textContent = humidityStatus(humidityTmp);
-            windStatusVal.textContent = windStatus(windTmp);    
+            windStatusVal.textContent = windStatus(windTmp);
             pressureStatusVal.textContent = pressureStatus(pressureTmp);
 
             weatherDays.textContent = cleaned.forecast.length;

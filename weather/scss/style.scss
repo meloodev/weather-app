@@ -545,15 +545,15 @@ header {
 
 
 
-.weather__details-item .details__decore.humidity::after {
+.weather__details-item.humidity .details__decore::after {
     width: var(--humidity-width, 0%);
 }
 
-.weather__details-item .details__decore.wind::after {
+.weather__details-item.wind .details__decore::after {
     width: var(--wind-width, 0%);
 }
 
-.weather__details-item .details__decore.pressure::after {
+.weather__details-item.pressure .details__decore::after {
     width: var(--pressure-width, 0%);
 }
 
@@ -583,10 +583,8 @@ header {
 .details__item-cover svg #wind {
     animation: rotate360 0s linear infinite;
     transform-box: fill-box;
-    /* важно! */
     transform-origin: 1.235rem 0.994rem !important;
     // transform-origin: center center;
-    /* крутится вокруг своей оси */
     // width: 36px;
     // height: 36px;
 }
