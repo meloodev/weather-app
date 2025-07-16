@@ -266,7 +266,8 @@ body.dark .header__icon-cover.menu .settings > li:nth-child(2) ul {
   background-color: #515151;
 }
 
-body.dark .header__icon-cover.menu .settings li:active {
+body.dark .header__icon-cover.menu .settings *,
+body.dark .header__icon-cover.menu .settings > li:nth-child(2) ul * {
   color: #161622;
 }
 
@@ -291,10 +292,10 @@ body.dark .modal__save-box button:active {
   body.dark .modal__history-header button:hover {
     background-color: #262635;
   }
-  body.dark .header__icon-cover.menu .settings > li:nth-child(2) ul:hover {
+  body.dark .header__icon-cover.menu .settings > li:nth-child(2) ul:hover * {
     color: #161622;
   }
-  body.dark .header__icon-cover.menu .settings li:hover {
+  body.dark .header__icon-cover.menu .settings li:hover * {
     color: #161622;
   }
 }
