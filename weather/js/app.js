@@ -78,12 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const humiditySpeed = document.querySelector('.weather__details-item.humidity svg #humidity__speed');
 
 
+    const loader__cover = document.querySelector('header .loader__cover');
+    const loader = document.querySelector('header .loader');
 
-
-
-
-
-
+    const errMsg = document.querySelector('header .err__message');
+    const errMsgText = document.querySelector('header .err__message span');
 
 
 
@@ -101,6 +100,18 @@ document.addEventListener('DOMContentLoaded', () => {
             weatherLoader.classList.remove('show');
             weatherLoader.classList.remove('done');
         }, 1100);
+    }
+
+    function removeLoader() {
+        body.classList.remove('lock');
+        loader__cover.classList.add('hide');
+        loader.classList.add('hide');
+    }
+
+    function errMessage(err) {
+        errMsg.classList.add('show');
+        errMsgText.textContent = err;
+        body.classList.add('lock');
     }
 
     menuBtn.addEventListener('click', (e) => {
@@ -162,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cleaned = await app.getWeather(city);
         if (!cleaned) {
             console.log("data not found");
-            done();
+            errMessage('data not found.');
             return;
         }
 
@@ -251,9 +262,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             weatherDailyItems.innerHTML = weatherItems;
 
+
         } catch (error) {
+            errMessage('Error processing weather data.');
             console.error('Error processing weather data:', error);
         } finally {
+            removeLoader();
             done();
         }
     };
