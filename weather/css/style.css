@@ -58,6 +58,28 @@ body.dark .header__icon-cover {
   color: #fff;
 }
 
+body.dark .header__icon-cover .settings {
+  background-color: #424242;
+}
+
+body.dark .header__icon-cover .submenu {
+  background-color: #424242 !important;
+}
+
+body.dark .header__icon-cover .settings .weather__settings *,
+body.dark .header__icon-cover .settings .weather__theme > *,
+body.dark .weather__theme .submenu .dark > *,
+body.dark .weather__theme .submenu .light > * {
+  color: #fff !important;
+}
+
+body.dark .header__icon-cover .settings .weather__settings:hover *,
+body.dark .header__icon-cover .settings .weather__theme:hover > *,
+body.dark .weather__theme .submenu .dark:hover > *,
+body.dark .weather__theme .submenu .light:hover > * {
+  color: #000 !important;
+}
+
 body.dark .weather__temp {
   background: unset;
   background-color: #161622;
@@ -261,16 +283,6 @@ body.dark .modal__popular-notfound {
   color: rgba(172, 172, 172, 0.8509803922);
 }
 
-body.dark .header__icon-cover.menu .settings,
-body.dark .header__icon-cover.menu .settings > li:nth-child(2) ul {
-  background-color: #515151;
-}
-
-body.dark .header__icon-cover.menu .settings *,
-body.dark .header__icon-cover.menu .settings > li:nth-child(2) ul * {
-  color: #161622;
-}
-
 body.dark .modal__save-box button {
   background-color: rgba(236, 236, 236, 0.1921568627);
 }
@@ -291,12 +303,6 @@ body.dark .modal__save-box button:active {
   }
   body.dark .modal__history-header button:hover {
     background-color: #262635;
-  }
-  body.dark .header__icon-cover.menu .settings > li:nth-child(2) ul:hover * {
-    color: #161622;
-  }
-  body.dark .header__icon-cover.menu .settings li:hover * {
-    color: #161622;
   }
 }
 body.dark .modal__popular-inner span:active,
