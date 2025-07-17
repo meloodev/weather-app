@@ -108,6 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
         loader.classList.add('hide');
     }
 
+    function addLoader() {
+        body.classList.add('lock');
+        loader__cover.classList.remove('hide');
+        loader.classList.remove('hide');
+    }
+
     function errMessage(err) {
         errMsg.classList.add('show');
         errMsgText.textContent = err;
@@ -169,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function renderWeather(city = 'batumi', scale = 'C') {
         loading();
+        addLoader();
         // app.getWeather().then(cleaned => {
         const cleaned = await app.getWeather(city);
         if (!cleaned) {
@@ -381,6 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTimeout(debounceTimer);
 
         debounceTimer = setTimeout(async () => {
+            addLoader();
             try {
                 const country = await app.getLocation(value);
                 if (!country) {
@@ -404,6 +412,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             } catch (err) {
                 console.error("error get data", err);
+            } finally {
+                removeLoader();
             }
 
         }, 500);
