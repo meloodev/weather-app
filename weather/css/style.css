@@ -1406,10 +1406,10 @@ header .loader {
 }
 
 .err__message span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 26px;
   color: tomato;
   font-family: "Montserrat", sans-serif;

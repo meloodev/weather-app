@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const humiditySpeed = document.querySelector('.weather__details-item.humidity svg #humidity__speed');
 
 
-    const loader__cover = document.querySelector('header .loader__cover');
+    const loaderCover = document.querySelector('header .loader__cover');
     const loader = document.querySelector('header .loader');
 
     const errMsg = document.querySelector('header .err__message');
@@ -104,13 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function removeLoader() {
         body.classList.remove('lock');
-        loader__cover.classList.add('hide');
+        loaderCover.classList.add('hide');
         loader.classList.add('hide');
     }
 
     function addLoader() {
         body.classList.add('lock');
-        loader__cover.classList.remove('hide');
+        loaderCover.classList.remove('hide');
         loader.classList.remove('hide');
     }
 
@@ -202,14 +202,12 @@ document.addEventListener('DOMContentLoaded', () => {
             weatherDate.setAttribute('datetime', cleaned.dateattr);
 
 
-
             humidity.textContent = `${humidityTmp} %`;
             wind.textContent = `${windTmp} km/h`;
             pressure.textContent = `${pressureTmp} hPa`;
-            //console.log(pressureTmp);
 
             humidityDetails.style.setProperty('--humidity-width', `${humidityTmp}%`);
-            windDetails.style.setProperty('--wind-width', `${((windTmp / 100) * 100)}%`);
+            windDetails.style.setProperty('--wind-width', `${(windTmp > 100 ? 100 : windTmp)}%`);
             pressureDetails.style.setProperty('--pressure-width', `${((pressureTmp - 980) / (1050 - 980)) * 100}%`);
 
             turbineSpeed.style.animationDuration = `${turbineSpeedCalc(windTmp)}s`;
@@ -358,7 +356,6 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.remove('reveal');
             modalInput.value = '';
             popularCities(modalPopular);
-
         }
 
         if (modalCancel.contains(target)) { // cancel btn
@@ -382,9 +379,9 @@ document.addEventListener('DOMContentLoaded', () => {
             popularCities(modalPopular);
             return;
         }
-
         if (value.length <= 2) return;
 
+        
         clearTimeout(debounceTimer);
 
         debounceTimer = setTimeout(async () => {
