@@ -1175,3 +1175,21 @@ header .loader {
     font-weight: 500;
     text-transform: uppercase;
 }
+
+
+
+// body::after {
+//     content: '';
+//     position: absolute;
+//     top: 0px;
+//     left: 0px;
+//     width: 200px;
+//     height: 200px;
+//     border-radius: 50%;
+//     background: linear-gradient(to right, #49da837e, #5ba0e986);
+//      filter: blur(100px);
+// }
+// body::after {
+//     top: var(--decore-top, 0px); 
+//     left: var(--decore-left, 0px); 
+// }

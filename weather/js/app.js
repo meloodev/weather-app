@@ -128,6 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     body.addEventListener('click', (e) => {
         const target = e.target;
+        // body.style.setProperty('--decore-left', `${Math.min(window.innerWidth - 200, e.clientX - 100)}px`);
+        // body.style.setProperty('--decore-top', `${Math.min(window.innerHeight - 200, e.clientY - 100)}px`);
 
         if (!menuBtn.contains(target) && !menu.contains(target)) {
             menu.classList.remove('show');
@@ -381,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (value.length <= 2) return;
 
-        
+
         clearTimeout(debounceTimer);
 
         debounceTimer = setTimeout(async () => {
