@@ -3,6 +3,7 @@ import { WeatherApp } from "../service/weatherServices.js";
 document.addEventListener('DOMContentLoaded', () => {
     const app = new WeatherApp();
 
+    
     const { saveSettings, loadSettings, removeSettings, saveTheme, loadTheme, popularCities } = app;
 
 
